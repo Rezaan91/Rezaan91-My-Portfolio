@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import { GraduationCap, Award, BookOpen, Mic, PenLine, Brain } from "lucide-react";
+import educationBg from "@/assets/education-bg.png";
 
 const education = [
   {
@@ -92,8 +93,15 @@ const shortCourses = [
 
 const EducationSection = () => {
   return (
-    <section id="education" className="py-20 md:py-32 relative">
-      <div className="container mx-auto px-4">
+    <section id="education" className="py-20 md:py-32 relative overflow-hidden">
+      {/* Background Image */}
+      <div 
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-30 pointer-events-none"
+        style={{ backgroundImage: `url(${educationBg})` }}
+      />
+      <div className="absolute inset-0 bg-background/70 pointer-events-none" />
+      
+      <div className="container mx-auto px-4 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}

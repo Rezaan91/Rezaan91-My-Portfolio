@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import { Monitor, FileSpreadsheet, PenTool, MessageSquare, FolderKanban, Code, Database, Users } from "lucide-react";
+import skillsBg from "@/assets/skills-bg.png";
 
 const skillCategories = [
   {
@@ -86,8 +87,15 @@ const skillCategories = [
 
 const SkillsSection = () => {
   return (
-    <section id="skills" className="py-20 md:py-32 relative bg-muted/20">
-      <div className="container mx-auto px-4">
+    <section id="skills" className="py-20 md:py-32 relative overflow-hidden">
+      {/* Background Image */}
+      <div 
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-30 pointer-events-none"
+        style={{ backgroundImage: `url(${skillsBg})` }}
+      />
+      <div className="absolute inset-0 bg-background/70 pointer-events-none" />
+      
+      <div className="container mx-auto px-4 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}

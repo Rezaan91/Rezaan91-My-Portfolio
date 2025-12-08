@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { Code, Briefcase, GraduationCap, Heart } from "lucide-react";
+import aboutBg from "@/assets/about-bg.png";
 
 const highlights = [
   {
@@ -26,8 +27,14 @@ const highlights = [
 
 const AboutSection = () => {
   return (
-    <section id="about" className="py-20 md:py-32 relative">
-      <div className="container mx-auto px-4">
+    <section id="about" className="py-20 md:py-32 relative overflow-hidden">
+      {/* Background Image */}
+      <div 
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-30 pointer-events-none"
+        style={{ backgroundImage: `url(${aboutBg})` }}
+      />
+      <div className="absolute inset-0 bg-background/70 pointer-events-none" />
+      <div className="container mx-auto px-4 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
