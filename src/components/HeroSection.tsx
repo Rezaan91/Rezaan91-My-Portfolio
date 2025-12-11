@@ -1,24 +1,34 @@
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { useRef } from "react";
 import { Button } from "@/components/ui/button";
-import { ArrowDown, Github, Linkedin, Mail } from "lucide-react";
+import { ArrowDown, Github, Linkedin, Mail, Download } from "lucide-react";
 import backgroundImage from "@/assets/background.png";
 import professionalPhoto from "@/assets/professional-photo.jpg";
 
 const HeroSection = () => {
+  const sectionRef = useRef<HTMLElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start start", "end start"]
+  });
+  const y = useTransform(scrollYProgress, [0, 1], [0, 300]);
+  const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
+
   return (
     <section
+      ref={sectionRef}
       id="home"
       className="relative min-h-screen flex items-center justify-center overflow-hidden"
     >
-      {/* Background Image with Overlay */}
-      <div className="absolute inset-0 z-0">
+      {/* Parallax Background Image with Overlay */}
+      <motion.div className="absolute inset-0 z-0" style={{ y }}>
         <img
           src={backgroundImage}
           alt="Background"
           className="w-full h-full object-cover opacity-30"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-background/80 via-background/90 to-background" />
-      </div>
+      </motion.div>
 
       {/* Decorative Elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
@@ -26,7 +36,7 @@ const HeroSection = () => {
         <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-accent/10 rounded-full blur-3xl animate-pulse-slow" style={{ animationDelay: "2s" }} />
       </div>
 
-      <div className="container mx-auto px-4 z-10">
+      <motion.div className="container mx-auto px-4 z-10" style={{ opacity }}>
         <div className="flex flex-col lg:flex-row items-center justify-center gap-12 lg:gap-20">
           {/* Profile Photo */}
           <motion.div
@@ -83,6 +93,12 @@ const HeroSection = () => {
               <Button variant="glass" size="lg" asChild>
                 <a href="#contact">Contact Me</a>
               </Button>
+              <Button variant="accent" size="lg" asChild>
+                <a href="/cv.pdf" download="Rezaan_Achmat_CV.pdf">
+                  <Download size={18} />
+                  Download CV
+                </a>
+              </Button>
             </div>
 
             {/* Social Links */}
@@ -125,7 +141,7 @@ const HeroSection = () => {
             <ArrowDown size={20} className="animate-bounce" />
           </a>
         </motion.div>
-      </div>
+      </motion.div>
     </section>
   );
 };
