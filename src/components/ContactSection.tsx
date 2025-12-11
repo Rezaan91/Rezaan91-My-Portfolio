@@ -1,11 +1,27 @@
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { Mail, Linkedin, Github, MapPin, Send } from "lucide-react";
+import contactBg from "@/assets/contact-bg.png";
 
 const ContactSection = () => {
+  const sectionRef = useRef<HTMLElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start end", "end start"]
+  });
+  const y = useTransform(scrollYProgress, [0, 1], [100, -100]);
+
   return (
-    <section id="contact" className="py-20 md:py-32 relative bg-muted/20">
-      <div className="container mx-auto px-4">
+    <section ref={sectionRef} id="contact" className="py-20 md:py-32 relative overflow-hidden">
+      {/* Parallax Background */}
+      <motion.div 
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-30 pointer-events-none"
+        style={{ backgroundImage: `url(${contactBg})`, y }}
+      />
+      <div className="absolute inset-0 bg-background/70 pointer-events-none" />
+      
+      <div className="container mx-auto px-4 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -22,7 +38,7 @@ const ContactSection = () => {
           </p>
         </motion.div>
 
-        <div className="max-w-4xl mx-auto">
+        <div className="max-w-4xl mx-auto relative z-10">
           <div className="grid md:grid-cols-2 gap-8">
             {/* Contact Info */}
             <motion.div

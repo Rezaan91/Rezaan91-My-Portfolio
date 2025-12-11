@@ -1,7 +1,9 @@
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { useRef } from "react";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import { Button } from "@/components/ui/button";
 import { ExternalLink, Github, Rocket, Shield, Bus, BarChart3, Smartphone, Sparkles } from "lucide-react";
+import projectsBg from "@/assets/projects-bg.png";
 
 const projects = [
   {
@@ -49,9 +51,23 @@ const projects = [
 ];
 
 const ProjectsSection = () => {
+  const sectionRef = useRef<HTMLElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start end", "end start"]
+  });
+  const y = useTransform(scrollYProgress, [0, 1], [100, -100]);
+
   return (
-    <section id="projects" className="py-20 md:py-32 relative">
-      <div className="container mx-auto px-4">
+    <section ref={sectionRef} id="projects" className="py-20 md:py-32 relative overflow-hidden">
+      {/* Parallax Background */}
+      <motion.div 
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-30 pointer-events-none"
+        style={{ backgroundImage: `url(${projectsBg})`, y }}
+      />
+      <div className="absolute inset-0 bg-background/70 pointer-events-none" />
+      
+      <div className="container mx-auto px-4 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
