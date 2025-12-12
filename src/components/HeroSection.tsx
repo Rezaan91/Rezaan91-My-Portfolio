@@ -1,18 +1,56 @@
 import { motion, useScroll, useTransform } from "framer-motion";
-import { useRef } from "react";
+import { useRef, useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { ArrowDown, Github, Linkedin, Mail, Download } from "lucide-react";
 import backgroundImage from "@/assets/background.png";
 import professionalPhoto from "@/assets/professional-photo.jpg";
 
+const taglines = [
+  "Transforming innovative ideas into cutting-edge digital solutions through code, creativity, and AI-powered technology",
+  "Building seamless user experiences with modern web technologies",
+  "Full Stack Developer passionate about creating impactful applications"
+];
+
 const HeroSection = () => {
   const sectionRef = useRef<HTMLElement>(null);
+  const [currentTagline, setCurrentTagline] = useState(0);
+  const [displayText, setDisplayText] = useState("");
+  const [isDeleting, setIsDeleting] = useState(false);
+
   const { scrollYProgress } = useScroll({
     target: sectionRef,
     offset: ["start start", "end start"]
   });
   const y = useTransform(scrollYProgress, [0, 1], [0, 300]);
   const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
+
+  useEffect(() => {
+    const currentText = taglines[currentTagline];
+    const typeSpeed = isDeleting ? 30 : 50;
+    const pauseTime = isDeleting ? 500 : 2000;
+
+    const handleTyping = () => {
+      if (!isDeleting) {
+        if (displayText.length < currentText.length) {
+          setDisplayText(currentText.slice(0, displayText.length + 1));
+        } else {
+          setTimeout(() => setIsDeleting(true), pauseTime);
+          return;
+        }
+      } else {
+        if (displayText.length > 0) {
+          setDisplayText(displayText.slice(0, -1));
+        } else {
+          setIsDeleting(false);
+          setCurrentTagline((prev) => (prev + 1) % taglines.length);
+          return;
+        }
+      }
+    };
+
+    const timer = setTimeout(handleTyping, typeSpeed);
+    return () => clearTimeout(timer);
+  }, [displayText, isDeleting, currentTagline]);
 
   return (
     <section
@@ -80,9 +118,10 @@ const HeroSection = () => {
               Aspiring Software & Web Developer | IT Support | Digital Problem-Solver
             </p>
             
-            <p className="text-muted-foreground mb-8 leading-relaxed">
-              Full Stack Developer with a passion for building innovative solutions. 
-              Skilled in JavaScript, React, Node.js, and UI/UX design.
+            {/* Typing Animation Tagline */}
+            <p className="text-muted-foreground mb-8 leading-relaxed min-h-[4rem]">
+              <span className="text-foreground">{displayText}</span>
+              <span className="inline-block w-0.5 h-5 bg-primary ml-1 animate-pulse" />
             </p>
 
             {/* CTA Buttons */}
