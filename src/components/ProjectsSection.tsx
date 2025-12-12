@@ -3,6 +3,7 @@ import { useRef } from "react";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import { Button } from "@/components/ui/button";
 import { ExternalLink, Github, Rocket, Shield, Bus, BarChart3, Smartphone, Sparkles } from "lucide-react";
+import Autoplay from "embla-carousel-autoplay";
 import projectsBg from "@/assets/projects-bg.png";
 
 const projects = [
@@ -96,6 +97,12 @@ const ProjectsSection = () => {
               align: "start",
               loop: true,
             }}
+            plugins={[
+              Autoplay({
+                delay: 4000,
+                stopOnInteraction: true,
+              }),
+            ]}
             className="w-full"
           >
             <CarouselContent className="-ml-4">

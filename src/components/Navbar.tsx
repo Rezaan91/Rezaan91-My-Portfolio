@@ -25,6 +25,16 @@ const Navbar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  const handleSmoothScroll = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    e.preventDefault();
+    const targetId = href.replace('#', '');
+    const element = document.getElementById(targetId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+    setIsOpen(false);
+  };
+
   return (
     <motion.nav
       initial={{ y: -100 }}
@@ -35,7 +45,11 @@ const Navbar = () => {
       }`}
     >
       <div className="container mx-auto px-4 flex items-center justify-between">
-        <a href="#home" className="text-2xl font-display font-bold gradient-text">
+        <a 
+          href="#home" 
+          onClick={(e) => handleSmoothScroll(e, '#home')}
+          className="text-2xl font-display font-bold gradient-text"
+        >
           RA
         </a>
 
@@ -45,6 +59,7 @@ const Navbar = () => {
             <a
               key={link.name}
               href={link.href}
+              onClick={(e) => handleSmoothScroll(e, link.href)}
               className="px-4 py-2 text-sm text-muted-foreground hover:text-foreground transition-colors duration-300 relative group"
             >
               {link.name}
@@ -54,7 +69,7 @@ const Navbar = () => {
         </div>
 
         <Button variant="glass" className="hidden md:flex" asChild>
-          <a href="#contact">Get in Touch</a>
+          <a href="#contact" onClick={(e) => handleSmoothScroll(e, '#contact')}>Get in Touch</a>
         </Button>
 
         {/* Mobile Menu Toggle */}
@@ -82,14 +97,14 @@ const Navbar = () => {
                 <a
                   key={link.name}
                   href={link.href}
-                  onClick={() => setIsOpen(false)}
+                  onClick={(e) => handleSmoothScroll(e, link.href)}
                   className="px-4 py-3 text-muted-foreground hover:text-foreground hover:bg-muted/50 rounded-lg transition-colors"
                 >
                   {link.name}
                 </a>
               ))}
               <Button variant="glass" className="mt-2" asChild>
-                <a href="#contact">Get in Touch</a>
+                <a href="#contact" onClick={(e) => handleSmoothScroll(e, '#contact')}>Get in Touch</a>
               </Button>
             </div>
           </motion.div>

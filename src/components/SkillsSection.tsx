@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import { Monitor, FileSpreadsheet, PenTool, MessageSquare, FolderKanban, Code, Database, Users } from "lucide-react";
+import Autoplay from "embla-carousel-autoplay";
 import skillsBg from "@/assets/skills-bg.png";
 
 const skillCategories = [
@@ -124,6 +125,12 @@ const SkillsSection = () => {
               align: "start",
               loop: true,
             }}
+            plugins={[
+              Autoplay({
+                delay: 3000,
+                stopOnInteraction: true,
+              }),
+            ]}
             className="w-full"
           >
             <CarouselContent className="-ml-4">
