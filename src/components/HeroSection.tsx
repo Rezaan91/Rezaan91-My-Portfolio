@@ -63,9 +63,9 @@ const HeroSection = () => {
         <img
           src={backgroundImage}
           alt="Background"
-          className="w-full h-full object-cover opacity-30"
+          className="w-full h-[120%] object-cover opacity-30"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-background/80 via-background/90 to-background" />
+        <div className="absolute inset-0 bg-gradient-to-b from-background/60 via-background/70 to-background/90" />
       </motion.div>
 
       {/* Decorative Elements */}
