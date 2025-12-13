@@ -63,10 +63,10 @@ const ProjectsSection = () => {
     <section ref={sectionRef} id="projects" className="py-20 md:py-32 relative overflow-hidden">
       {/* Parallax Background */}
       <motion.div 
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-30 pointer-events-none"
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-25 pointer-events-none scale-110"
         style={{ backgroundImage: `url(${projectsBg})`, y }}
       />
-      <div className="absolute inset-0 bg-background/70 pointer-events-none" />
+      <div className="absolute inset-0 bg-background/60 pointer-events-none" />
       
       <div className="container mx-auto px-4 relative z-10">
         <motion.div
