@@ -1,7 +1,14 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef, useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
-import { ArrowDown, Github, Linkedin, Mail, Download } from "lucide-react";
+import { ArrowDown, Github, Linkedin, Mail, Download, Eye, ExternalLink, ChevronDown } from "lucide-react";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+import CVPreviewModal from "./CVPreviewModal";
 import backgroundImage from "@/assets/background.png";
 import professionalPhoto from "@/assets/professional-photo.jpg";
 
@@ -16,6 +23,7 @@ const HeroSection = () => {
   const [currentTagline, setCurrentTagline] = useState(0);
   const [displayText, setDisplayText] = useState("");
   const [isDeleting, setIsDeleting] = useState(false);
+  const [cvModalOpen, setCvModalOpen] = useState(false);
 
   const { scrollYProgress } = useScroll({
     target: sectionRef,
@@ -132,12 +140,33 @@ const HeroSection = () => {
               <Button variant="glass" size="lg" asChild>
                 <a href="#contact">Contact Me</a>
               </Button>
-              <Button variant="accent" size="lg" asChild>
-                <a href="/cv.pdf" target="_blank" rel="noopener noreferrer">
-                  <Download size={18} />
-                  Preview CV
-                </a>
-              </Button>
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <Button variant="accent" size="lg">
+                    <Download size={18} />
+                    CV
+                    <ChevronDown size={16} />
+                  </Button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent align="center" className="w-48">
+                  <DropdownMenuItem onClick={() => setCvModalOpen(true)} className="cursor-pointer">
+                    <Eye size={16} />
+                    Preview Inline
+                  </DropdownMenuItem>
+                  <DropdownMenuItem asChild className="cursor-pointer">
+                    <a href="/cv.pdf" target="_blank" rel="noopener noreferrer">
+                      <ExternalLink size={16} />
+                      Open in New Tab
+                    </a>
+                  </DropdownMenuItem>
+                  <DropdownMenuItem asChild className="cursor-pointer">
+                    <a href="/cv.pdf" download="Rezaan_Achmat_CV.pdf">
+                      <Download size={16} />
+                      Download PDF
+                    </a>
+                  </DropdownMenuItem>
+                </DropdownMenuContent>
+              </DropdownMenu>
             </div>
 
             {/* Social Links */}
@@ -181,6 +210,8 @@ const HeroSection = () => {
           </a>
         </motion.div>
       </motion.div>
+
+      <CVPreviewModal open={cvModalOpen} onOpenChange={setCvModalOpen} />
     </section>
   );
 };
