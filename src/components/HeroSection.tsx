@@ -133,9 +133,9 @@ const HeroSection = () => {
                 <a href="#contact">Contact Me</a>
               </Button>
               <Button variant="accent" size="lg" asChild>
-                <a href="/cv.pdf" download="Rezaan_Achmat_CV.pdf">
+                <a href="/cv.pdf" target="_blank" rel="noopener noreferrer">
                   <Download size={18} />
-                  Download CV
+                  Preview CV
                 </a>
               </Button>
             </div>
