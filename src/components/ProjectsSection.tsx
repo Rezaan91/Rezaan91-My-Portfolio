@@ -113,31 +113,47 @@ const ProjectsSection = () => {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ delay: index * 0.1 }}
-                    className="glass-card rounded-xl overflow-hidden h-full group hover:scale-105 transition-transform duration-300"
+                    whileHover={{ 
+                      scale: 1.05,
+                      y: -8,
+                      transition: { duration: 0.3, ease: "easeOut" }
+                    }}
+                    className="glass-card rounded-xl overflow-hidden h-full group cursor-pointer"
                   >
                     {/* Project Header */}
                     <div className={`h-32 bg-gradient-to-br ${project.color} p-6 flex items-center justify-center relative overflow-hidden`}>
-                      <div className="absolute inset-0 bg-background/20" />
-                      <project.icon size={48} className="text-foreground relative z-10" />
+                      <div className="absolute inset-0 bg-background/20 group-hover:bg-background/10 transition-colors duration-300" />
+                      <motion.div
+                        whileHover={{ rotate: 12, scale: 1.1 }}
+                        transition={{ duration: 0.3 }}
+                      >
+                        <project.icon size={48} className="text-foreground relative z-10" />
+                      </motion.div>
                     </div>
                     
                     {/* Project Content */}
                     <div className="p-6">
-                      <h3 className="font-display font-semibold text-xl mb-3">{project.title}</h3>
+                      <h3 className="font-display font-semibold text-xl mb-3 group-hover:text-primary transition-colors duration-300">{project.title}</h3>
                       <p className="text-muted-foreground text-sm mb-4 leading-relaxed">{project.description}</p>
                       
                       {/* Tags */}
                       <div className="flex flex-wrap gap-2 mb-4">
-                        {project.tags.map((tag) => (
-                          <span key={tag} className="px-2 py-1 text-xs rounded-full bg-muted text-muted-foreground">
+                        {project.tags.map((tag, tagIndex) => (
+                          <motion.span 
+                            key={tag} 
+                            className="px-2 py-1 text-xs rounded-full bg-muted text-muted-foreground group-hover:bg-primary/10 group-hover:text-primary transition-colors duration-300"
+                            initial={{ opacity: 0, scale: 0.8 }}
+                            whileInView={{ opacity: 1, scale: 1 }}
+                            transition={{ delay: tagIndex * 0.05 }}
+                          >
                             {tag}
-                          </span>
+                          </motion.span>
                         ))}
                       </div>
 
                       {/* Links */}
                       <div className="flex gap-3">
-                        <Button variant="glass" size="sm" asChild>
+                        <Button variant="glass" size="sm" asChild className="group-hover:bg-primary group-hover:text-primary-foreground transition-colors duration-300">
                           <a href="https://github.com/Rezaan91" target="_blank" rel="noopener noreferrer">
                             <Github size={16} />
                             Code
