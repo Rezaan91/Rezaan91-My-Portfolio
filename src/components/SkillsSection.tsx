@@ -141,20 +141,38 @@ const SkillsSection = () => {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ delay: index * 0.1 }}
-                    className="glass-card rounded-xl p-6 h-full hover:scale-105 transition-transform duration-300 group"
+                    whileHover={{ 
+                      scale: 1.05,
+                      y: -8,
+                      transition: { duration: 0.3, ease: "easeOut" }
+                    }}
+                    className="glass-card rounded-xl p-6 h-full group cursor-pointer"
                   >
                     <div className="flex items-center gap-3 mb-4">
-                      <div className="p-3 rounded-lg bg-accent/10 text-accent group-hover:bg-accent group-hover:text-accent-foreground transition-colors">
+                      <motion.div 
+                        className="p-3 rounded-lg bg-accent/10 text-accent group-hover:bg-accent group-hover:text-accent-foreground transition-colors duration-300"
+                        whileHover={{ rotate: 12, scale: 1.1 }}
+                        transition={{ duration: 0.3 }}
+                      >
                         <category.icon size={24} />
-                      </div>
-                      <h3 className="font-display font-semibold text-lg">{category.title}</h3>
+                      </motion.div>
+                      <h3 className="font-display font-semibold text-lg group-hover:text-primary transition-colors duration-300">{category.title}</h3>
                     </div>
                     <ul className="space-y-2">
-                      {category.skills.map((skill) => (
-                        <li key={skill} className="text-sm text-muted-foreground flex items-start gap-2">
-                          <span className="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0" />
+                      {category.skills.map((skill, skillIndex) => (
+                        <motion.li 
+                          key={skill} 
+                          className="text-sm text-muted-foreground flex items-start gap-2 group-hover:text-foreground transition-colors duration-300"
+                          initial={{ opacity: 0, x: -10 }}
+                          whileInView={{ opacity: 1, x: 0 }}
+                          transition={{ delay: skillIndex * 0.05 }}
+                        >
+                          <motion.span 
+                            className="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0"
+                            whileHover={{ scale: 1.5 }}
+                          />
                           {skill}
-                        </li>
+                        </motion.li>
                       ))}
                     </ul>
                   </motion.div>
