@@ -9,6 +9,7 @@ import EducationSection from "@/components/EducationSection";
 import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
 import ScrollToTop from "@/components/ScrollToTop";
+import AnimatedSection from "@/components/AnimatedSection";
 
 const Index = () => {
   return (
@@ -30,12 +31,24 @@ const Index = () => {
         <Navbar />
         <main>
           <HeroSection />
-          <AboutSection />
-          <SkillsSection />
-          <ProjectsSection />
-          <ExperienceSection />
-          <EducationSection />
-          <ContactSection />
+          <AnimatedSection>
+            <AboutSection />
+          </AnimatedSection>
+          <AnimatedSection>
+            <SkillsSection />
+          </AnimatedSection>
+          <AnimatedSection>
+            <ProjectsSection />
+          </AnimatedSection>
+          <AnimatedSection>
+            <ExperienceSection />
+          </AnimatedSection>
+          <AnimatedSection>
+            <EducationSection />
+          </AnimatedSection>
+          <AnimatedSection>
+            <ContactSection />
+          </AnimatedSection>
         </main>
         <Footer />
         <ScrollToTop />
