@@ -49,13 +49,13 @@ const Navbar = () => {
         <a 
           href="#home" 
           onClick={(e) => handleSmoothScroll(e, '#home')}
-          className="text-2xl font-display font-bold gradient-text"
+          className="text-2xl font-display font-bold gradient-text md:w-32"
         >
           RA
         </a>
 
-        {/* Desktop Navigation */}
-        <div className="hidden md:flex items-center gap-1">
+        {/* Desktop Navigation - Centered */}
+        <div className="hidden md:flex items-center justify-center gap-1 flex-1">
           {navLinks.map((link) => (
             <a
               key={link.name}
@@ -69,7 +69,7 @@ const Navbar = () => {
           ))}
         </div>
 
-        <div className="hidden md:flex items-center gap-3">
+        <div className="hidden md:flex items-center justify-end gap-3 md:w-32">
           <Button variant="glass" asChild>
             <a href="#contact" onClick={(e) => handleSmoothScroll(e, '#contact')}>Get in Touch</a>
           </Button>
