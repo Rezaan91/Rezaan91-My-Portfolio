@@ -5,13 +5,13 @@ import { motion, AnimatePresence } from "framer-motion";
 import ThemeToggle from "./ThemeToggle";
 
 const navLinks = [
-  { name: "Home", href: "#home" },
-  { name: "About", href: "#about" },
-  { name: "Skills", href: "#skills" },
-  { name: "Projects", href: "#projects" },
-  { name: "Experience", href: "#experience" },
-  { name: "Education", href: "#education" },
-  { name: "Contact", href: "#contact" },
+  { name: "Home", href: "#home", color: "text-primary" },
+  { name: "About", href: "#about", color: "text-accent" },
+  { name: "Skills", href: "#skills", color: "text-secondary-foreground" },
+  { name: "Projects", href: "#projects", color: "text-primary" },
+  { name: "Experience", href: "#experience", color: "text-accent" },
+  { name: "Education", href: "#education", color: "text-secondary-foreground" },
+  { name: "Contact", href: "#contact", color: "text-primary" },
 ];
 
 const Navbar = () => {
@@ -61,10 +61,10 @@ const Navbar = () => {
               key={link.name}
               href={link.href}
               onClick={(e) => handleSmoothScroll(e, link.href)}
-              className="px-4 py-2 text-sm text-muted-foreground hover:text-foreground transition-colors duration-300 relative group"
+              className={`px-4 py-2 text-sm font-medium ${link.color} hover:opacity-80 transition-all duration-300 relative group`}
             >
               {link.name}
-              <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-0.5 bg-primary group-hover:w-3/4 transition-all duration-300" />
+              <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-0.5 bg-current group-hover:w-3/4 transition-all duration-300" />
             </a>
           ))}
         </div>
@@ -104,7 +104,7 @@ const Navbar = () => {
                   key={link.name}
                   href={link.href}
                   onClick={(e) => handleSmoothScroll(e, link.href)}
-                  className="px-4 py-3 text-muted-foreground hover:text-foreground hover:bg-muted/50 rounded-lg transition-colors"
+                  className={`px-4 py-3 font-medium ${link.color} hover:opacity-80 hover:bg-muted/50 rounded-lg transition-all`}
                 >
                   {link.name}
                 </a>
