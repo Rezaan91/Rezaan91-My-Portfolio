@@ -3,22 +3,20 @@ import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import ThemeToggle from "./ThemeToggle";
-import { useActiveSection } from "@/hooks/use-active-section";
 
 const navLinks = [
-  { name: "Home", href: "#home", id: "home", color: "text-primary", activeColor: "bg-primary/10" },
-  { name: "About", href: "#about", id: "about", color: "text-accent", activeColor: "bg-accent/10" },
-  { name: "Skills", href: "#skills", id: "skills", color: "text-secondary-foreground", activeColor: "bg-secondary/30" },
-  { name: "Projects", href: "#projects", id: "projects", color: "text-primary", activeColor: "bg-primary/10" },
-  { name: "Experience", href: "#experience", id: "experience", color: "text-accent", activeColor: "bg-accent/10" },
-  { name: "Education", href: "#education", id: "education", color: "text-secondary-foreground", activeColor: "bg-secondary/30" },
-  { name: "Contact", href: "#contact", id: "contact", color: "text-primary", activeColor: "bg-primary/10" },
+  { name: "Home", href: "#home", color: "text-primary" },
+  { name: "About", href: "#about", color: "text-accent" },
+  { name: "Skills", href: "#skills", color: "text-secondary-foreground" },
+  { name: "Projects", href: "#projects", color: "text-primary" },
+  { name: "Experience", href: "#experience", color: "text-accent" },
+  { name: "Education", href: "#education", color: "text-secondary-foreground" },
+  { name: "Contact", href: "#contact", color: "text-primary" },
 ];
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const activeSection = useActiveSection();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -51,40 +49,27 @@ const Navbar = () => {
         <a 
           href="#home" 
           onClick={(e) => handleSmoothScroll(e, '#home')}
-          className="text-2xl font-display font-bold gradient-text md:w-32"
+          className="text-2xl font-display font-bold gradient-text"
         >
           RA
         </a>
 
-        {/* Desktop Navigation - Centered */}
-        <div className="hidden md:flex items-center justify-center gap-1 flex-1">
-          {navLinks.map((link) => {
-            const isActive = activeSection === link.id;
-            return (
-              <a
-                key={link.name}
-                href={link.href}
-                onClick={(e) => handleSmoothScroll(e, link.href)}
-                className={`px-4 py-2 text-sm font-medium ${link.color} hover:opacity-80 transition-all duration-300 relative group rounded-md ${
-                  isActive ? link.activeColor : ""
-                }`}
-              >
-                {link.name}
-                <motion.span 
-                  className="absolute bottom-0 left-1/2 -translate-x-1/2 h-0.5 bg-current"
-                  initial={{ width: 0 }}
-                  animate={{ width: isActive ? "75%" : 0 }}
-                  transition={{ duration: 0.3 }}
-                />
-                {!isActive && (
-                  <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-0.5 bg-current group-hover:w-3/4 transition-all duration-300" />
-                )}
-              </a>
-            );
-          })}
+        {/* Desktop Navigation */}
+        <div className="hidden md:flex items-center gap-1">
+          {navLinks.map((link) => (
+            <a
+              key={link.name}
+              href={link.href}
+              onClick={(e) => handleSmoothScroll(e, link.href)}
+              className={`px-4 py-2 text-sm font-medium ${link.color} hover:opacity-80 transition-all duration-300 relative group`}
+            >
+              {link.name}
+              <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-0.5 bg-current group-hover:w-3/4 transition-all duration-300" />
+            </a>
+          ))}
         </div>
 
-        <div className="hidden md:flex items-center justify-end gap-3 md:w-32">
+        <div className="hidden md:flex items-center gap-3">
           <Button variant="glass" asChild>
             <a href="#contact" onClick={(e) => handleSmoothScroll(e, '#contact')}>Get in Touch</a>
           </Button>
@@ -114,21 +99,16 @@ const Navbar = () => {
             className="md:hidden glass-card mt-2 mx-4 rounded-lg overflow-hidden"
           >
             <div className="flex flex-col p-4 gap-2">
-              {navLinks.map((link) => {
-                const isActive = activeSection === link.id;
-                return (
-                  <a
-                    key={link.name}
-                    href={link.href}
-                    onClick={(e) => handleSmoothScroll(e, link.href)}
-                    className={`px-4 py-3 font-medium ${link.color} hover:opacity-80 rounded-lg transition-all ${
-                      isActive ? `${link.activeColor} font-semibold` : "hover:bg-muted/50"
-                    }`}
-                  >
-                    {link.name}
-                  </a>
-                );
-              })}
+              {navLinks.map((link) => (
+                <a
+                  key={link.name}
+                  href={link.href}
+                  onClick={(e) => handleSmoothScroll(e, link.href)}
+                  className={`px-4 py-3 font-medium ${link.color} hover:opacity-80 hover:bg-muted/50 rounded-lg transition-all`}
+                >
+                  {link.name}
+                </a>
+              ))}
               <Button variant="glass" className="mt-2" asChild>
                 <a href="#contact" onClick={(e) => handleSmoothScroll(e, '#contact')}>Get in Touch</a>
               </Button>

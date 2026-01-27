@@ -73,32 +73,12 @@ const ThemeToggle = () => {
         </TooltipTrigger>
         <TooltipContent 
           side="bottom" 
-          className="relative overflow-hidden border-0 px-5 py-3 max-w-[220px] rounded-xl shadow-lg animate-in fade-in-0 zoom-in-95 duration-300"
-          style={{
-            background: 'linear-gradient(135deg, hsl(174, 60%, 40%) 0%, hsl(306, 58%, 45%) 100%)',
-          }}
+          className="bg-card border-primary/30 text-foreground px-4 py-2 max-w-[200px]"
         >
-          <div className="absolute inset-0 bg-gradient-to-br from-white/20 to-transparent pointer-events-none" />
-          <div className="relative z-10">
-            <div className="flex items-center gap-2 mb-1">
-              <motion.span
-                animate={{ rotate: [0, 15, -15, 0] }}
-                transition={{ duration: 1.5, repeat: Infinity, repeatDelay: 2 }}
-                className="text-lg"
-              >
-                🌗
-              </motion.span>
-              <p className="text-sm font-semibold text-white">Theme Toggle</p>
-            </div>
-            <p className="text-xs text-white/85 leading-relaxed">
-              Click to switch between light and dark mode!
-            </p>
-          </div>
-          <motion.div 
-            className="absolute -bottom-1 -right-1 w-16 h-16 rounded-full bg-white/10 blur-xl"
-            animate={{ scale: [1, 1.2, 1], opacity: [0.3, 0.5, 0.3] }}
-            transition={{ duration: 3, repeat: Infinity }}
-          />
+          <p className="text-sm font-medium">🌗 Theme Toggle</p>
+          <p className="text-xs text-muted-foreground mt-1">
+            Click to switch between light and dark mode!
+          </p>
         </TooltipContent>
       </Tooltip>
     </TooltipProvider>
