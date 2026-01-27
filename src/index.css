@@ -165,16 +165,28 @@
   }
 
   .glass-button {
-    background: hsla(180, 20%, 100%, 0.7);
+    background: hsla(180, 20%, 100%, 0.85);
     backdrop-filter: blur(8px);
-    border: 1px solid hsla(174, 40%, 50%, 0.3);
+    border: 1px solid hsla(174, 40%, 50%, 0.4);
+    box-shadow: 0 2px 8px hsla(180, 20%, 20%, 0.1);
     transition: all 0.3s ease;
   }
 
   .glass-button:hover {
-    background: hsla(174, 50%, 90%, 0.8);
-    border-color: hsla(174, 60%, 50%, 0.5);
+    background: hsla(174, 50%, 90%, 0.9);
+    border-color: hsla(174, 60%, 50%, 0.6);
     box-shadow: var(--shadow-glow);
+  }
+
+  .dark .glass-button {
+    background: hsla(220, 20%, 20%, 0.8);
+    border: 1px solid hsla(174, 40%, 50%, 0.35);
+    box-shadow: 0 2px 8px hsla(220, 20%, 5%, 0.3);
+  }
+
+  .dark .glass-button:hover {
+    background: hsla(220, 20%, 25%, 0.9);
+    border-color: hsla(174, 60%, 50%, 0.5);
   }
 
   .section-gradient {
