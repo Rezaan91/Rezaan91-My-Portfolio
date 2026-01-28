@@ -17,6 +17,7 @@ const navLinks = [
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [activeSection, setActiveSection] = useState("home");
 
   useEffect(() => {
     const handleScroll = () => {
@@ -24,6 +25,36 @@ const Navbar = () => {
     };
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  // IntersectionObserver to track active section
+  useEffect(() => {
+    const sectionIds = navLinks.map(link => link.href.replace('#', ''));
+    
+    const observerOptions = {
+      root: null,
+      rootMargin: '-20% 0px -70% 0px',
+      threshold: 0,
+    };
+
+    const observerCallback = (entries: IntersectionObserverEntry[]) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          setActiveSection(entry.target.id);
+        }
+      });
+    };
+
+    const observer = new IntersectionObserver(observerCallback, observerOptions);
+
+    sectionIds.forEach((id) => {
+      const element = document.getElementById(id);
+      if (element) {
+        observer.observe(element);
+      }
+    });
+
+    return () => observer.disconnect();
   }, []);
 
   const handleSmoothScroll = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
@@ -55,18 +86,30 @@ const Navbar = () => {
         </a>
 
         {/* Desktop Navigation */}
-        <div className="hidden md:flex items-center gap-1">
-          {navLinks.map((link) => (
-            <a
-              key={link.name}
-              href={link.href}
-              onClick={(e) => handleSmoothScroll(e, link.href)}
-              className={`px-4 py-2 text-sm font-medium ${link.color} hover:opacity-80 transition-all duration-300 relative group`}
-            >
-              {link.name}
-              <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-0.5 bg-current group-hover:w-3/4 transition-all duration-300" />
-            </a>
-          ))}
+        <div className="hidden md:flex items-center gap-1 relative">
+          {navLinks.map((link) => {
+            const isActive = activeSection === link.href.replace('#', '');
+            return (
+              <a
+                key={link.name}
+                href={link.href}
+                onClick={(e) => handleSmoothScroll(e, link.href)}
+                className={`px-4 py-2 text-sm font-medium ${link.color} hover:opacity-80 transition-all duration-300 relative group`}
+              >
+                {isActive && (
+                  <motion.span
+                    layoutId="activeNavBubble"
+                    className="absolute inset-0 rounded-full bg-muted/80 -z-10"
+                    transition={{ type: "spring", stiffness: 380, damping: 30 }}
+                  />
+                )}
+                {link.name}
+                <span className={`absolute bottom-0 left-1/2 -translate-x-1/2 h-0.5 bg-current transition-all duration-300 ${
+                  isActive ? 'w-3/4' : 'w-0 group-hover:w-3/4'
+                }`} />
+              </a>
+            );
+          })}
         </div>
 
         <div className="hidden md:flex items-center gap-3">
@@ -99,16 +142,28 @@ const Navbar = () => {
             className="md:hidden glass-card mt-2 mx-4 rounded-lg overflow-hidden"
           >
             <div className="flex flex-col p-4 gap-2">
-              {navLinks.map((link) => (
-                <a
-                  key={link.name}
-                  href={link.href}
-                  onClick={(e) => handleSmoothScroll(e, link.href)}
-                  className={`px-4 py-3 font-medium ${link.color} hover:opacity-80 hover:bg-muted/50 rounded-lg transition-all`}
-                >
-                  {link.name}
-                </a>
-              ))}
+              {navLinks.map((link) => {
+                const isActive = activeSection === link.href.replace('#', '');
+                return (
+                  <a
+                    key={link.name}
+                    href={link.href}
+                    onClick={(e) => handleSmoothScroll(e, link.href)}
+                    className={`px-4 py-3 font-medium ${link.color} hover:opacity-80 rounded-lg transition-all relative ${
+                      isActive ? 'bg-muted/80' : 'hover:bg-muted/50'
+                    }`}
+                  >
+                    {link.name}
+                    {isActive && (
+                      <motion.span
+                        layoutId="activeNavBubbleMobile"
+                        className="absolute left-0 top-1/2 -translate-y-1/2 w-1 h-6 rounded-full bg-current"
+                        transition={{ type: "spring", stiffness: 380, damping: 30 }}
+                      />
+                    )}
+                  </a>
+                );
+              })}
               <Button variant="glass" className="mt-2" asChild>
                 <a href="#contact" onClick={(e) => handleSmoothScroll(e, '#contact')}>Get in Touch</a>
               </Button>
