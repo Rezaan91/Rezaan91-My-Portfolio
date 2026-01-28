@@ -99,7 +99,7 @@ const Navbar = () => {
                 {isActive && (
                   <motion.span
                     layoutId="activeNavBubble"
-                    className="absolute inset-0 rounded-full bg-muted/80 -z-10"
+                    className="absolute inset-0 rounded-full bg-gradient-to-r from-primary/20 to-accent/20 border border-primary/30 -z-10"
                     transition={{ type: "spring", stiffness: 380, damping: 30 }}
                   />
                 )}
@@ -150,7 +150,7 @@ const Navbar = () => {
                     href={link.href}
                     onClick={(e) => handleSmoothScroll(e, link.href)}
                     className={`px-4 py-3 font-medium ${link.color} hover:opacity-80 rounded-lg transition-all relative ${
-                      isActive ? 'bg-muted/80' : 'hover:bg-muted/50'
+                      isActive ? 'bg-gradient-to-r from-primary/20 to-accent/20 border border-primary/30' : 'hover:bg-muted/50'
                     }`}
                   >
                     {link.name}
