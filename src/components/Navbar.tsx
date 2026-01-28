@@ -112,10 +112,7 @@ const Navbar = () => {
           })}
         </div>
 
-        <div className="hidden md:flex items-center gap-3">
-          <Button variant="glass" asChild>
-            <a href="#contact" onClick={(e) => handleSmoothScroll(e, '#contact')}>Get in Touch</a>
-          </Button>
+        <div className="hidden md:flex items-center">
           <ThemeToggle />
         </div>
 
@@ -164,9 +161,6 @@ const Navbar = () => {
                   </a>
                 );
               })}
-              <Button variant="glass" className="mt-2" asChild>
-                <a href="#contact" onClick={(e) => handleSmoothScroll(e, '#contact')}>Get in Touch</a>
-              </Button>
             </div>
           </motion.div>
         )}
