@@ -114,9 +114,9 @@ const ContactSection = () => {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.3 }}
-              className="flex flex-col justify-center"
+              className="flex flex-col"
             >
-              <div className="glass-card rounded-xl p-8 text-center">
+              <div className="glass-card rounded-xl p-6 text-center h-full flex flex-col justify-center">
                 <div className="w-16 h-16 mx-auto mb-6 rounded-full bg-gradient-to-br from-primary via-accent to-secondary flex items-center justify-center">
                   <Send size={28} className="text-foreground" />
                 </div>
