@@ -138,7 +138,7 @@ const HeroSection = () => {
                 <a href="#projects">View My Work</a>
               </Button>
               <Button variant="glass" size="lg" asChild>
-                <a href="#contact">Contact Me</a>
+                <a href="#contact">Get in Touch</a>
               </Button>
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
