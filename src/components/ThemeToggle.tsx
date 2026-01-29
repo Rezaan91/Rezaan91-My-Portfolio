@@ -73,11 +73,17 @@ const ThemeToggle = () => {
         </TooltipTrigger>
         <TooltipContent 
           side="bottom" 
-          className="bg-card border-primary/30 text-foreground px-4 py-2 max-w-[200px]"
+          className="bg-card border-primary/30 text-foreground px-4 py-3 max-w-[280px]"
         >
-          <p className="text-sm font-medium">🌗 Theme Toggle</p>
-          <p className="text-xs text-muted-foreground mt-1">
-            Click to switch between light and dark mode!
+          <p className="text-sm font-bold">Welcome! 👋</p>
+          <p className="text-xs text-muted-foreground mt-2">
+            Hi there! Welcome to my portfolio. I've added a light and dark mode feature for your viewing comfort.
+          </p>
+          <p className="text-xs text-muted-foreground mt-2">
+            You can toggle between themes anytime using the sun/moon icon. Your preference will be saved for future visits.
+          </p>
+          <p className="text-xs text-muted-foreground mt-2">
+            Enjoy exploring my work!
           </p>
         </TooltipContent>
       </Tooltip>
