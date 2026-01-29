@@ -75,7 +75,7 @@ const HeroSection = () => {
       </div>
 
       <motion.div className="container mx-auto px-4 z-10" style={{ opacity }}>
-        <div className="flex flex-col-reverse lg:flex-row items-center justify-center gap-12 lg:gap-20">
+        <div className="flex flex-col-reverse lg:flex-row items-center lg:items-start lg:justify-start gap-12 lg:gap-20">
           {/* Profile Photo */}
           <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
@@ -99,7 +99,7 @@ const HeroSection = () => {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-center max-w-xl"
+            className="text-center lg:text-left max-w-xl"
           >
             <motion.p
               initial={{ opacity: 0 }}
@@ -125,7 +125,7 @@ const HeroSection = () => {
             </p>
 
             {/* CTA Buttons */}
-            <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
+            <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start mb-8">
               <Button variant="hero" asChild>
                 <a href="#projects">View My Work</a>
               </Button>
@@ -135,7 +135,7 @@ const HeroSection = () => {
             </div>
 
             {/* Social Links */}
-            <div className="flex gap-4 justify-center">
+            <div className="flex gap-4 justify-center lg:justify-start">
               <a
                 href="https://github.com/Rezaan91"
                 target="_blank"
