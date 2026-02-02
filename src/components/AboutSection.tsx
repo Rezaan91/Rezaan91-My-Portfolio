@@ -57,9 +57,9 @@ const AboutSection = () => {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="glass-card rounded-2xl p-8 md:p-12 mb-12"
           >
-            <div className="flex flex-col md:flex-row items-center gap-8">
+            <div className="flex flex-col items-center gap-8">
               {/* Profile Photo */}
-              <div className="relative shrink-0">
+              <div className="relative">
                 <div className="relative w-48 h-48 md:w-56 md:h-56 rounded-full overflow-hidden border-4 border-primary/30 shadow-[0_0_60px_hsla(174,60%,45%,0.3)]">
                   <img
                     src={professionalPhoto}
@@ -71,7 +71,7 @@ const AboutSection = () => {
                 <div className="absolute inset-0 -m-3 rounded-full border-2 border-dashed border-accent/30 animate-spin" style={{ animationDuration: "30s" }} />
               </div>
               
-              <p className="text-lg text-muted-foreground leading-relaxed text-center md:text-left">
+              <p className="text-lg text-muted-foreground leading-relaxed text-center">
                 Welcome to my portfolio! I'm Rezaan, a creative Full Stack Developer with a love for design and technology. With years of experience in crafting digital experiences, I bring ideas to life through thoughtful design and clean code. My journey spans from IT Technical Support to Full Stack Development, complemented by certifications in Project Management and Business Administration. I thrive on creating user-centered applications that solve real-world problems while delivering exceptional experiences. When I'm not designing or coding, you can find me exploring new creative tools, learning about the latest design trends.
               </p>
             </div>
