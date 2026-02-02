@@ -3,7 +3,7 @@ import { useRef, useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { ArrowDown, Github, Linkedin, Mail } from "lucide-react";
 import backgroundImage from "@/assets/background.png";
-import professionalPhoto from "@/assets/professional-photo.jpg";
+
 
 const taglines = [
   "Transforming innovative ideas into cutting-edge digital solutions through code, creativity, and AI-powered technology",
@@ -75,25 +75,7 @@ const HeroSection = () => {
       </div>
 
       <motion.div className="container mx-auto px-4 z-10" style={{ opacity }}>
-        <div className="flex flex-col-reverse lg:flex-row items-center lg:items-start lg:justify-start gap-12 lg:gap-20">
-          {/* Profile Photo */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
-            className="relative"
-          >
-            <div className="relative w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden border-4 border-primary/30 shadow-[0_0_60px_hsla(174,60%,45%,0.3)]">
-              <img
-                src={professionalPhoto}
-                alt="Rezaan Achmat"
-                className="w-full h-full object-cover object-top"
-              />
-            </div>
-            {/* Decorative ring */}
-            <div className="absolute inset-0 -m-3 rounded-full border-2 border-dashed border-accent/30 animate-spin" style={{ animationDuration: "30s" }} />
-          </motion.div>
-
+        <div className="flex flex-col items-center lg:items-start lg:justify-start gap-12">
           {/* Hero Content */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
