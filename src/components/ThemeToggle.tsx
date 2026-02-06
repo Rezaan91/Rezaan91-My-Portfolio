@@ -23,7 +23,7 @@ const ThemeToggle = () => {
 
   return (
     <TooltipProvider>
-      <Tooltip open={showIntro}>
+      <Tooltip open={showTooltip}>
         <TooltipTrigger asChild>
           <Button
             variant="ghost"
