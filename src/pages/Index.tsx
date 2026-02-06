@@ -38,7 +38,7 @@ const Index = () => {
           <ContactSection />
         </main>
         <Footer />
-        <ScrollToTop />
+        <SectionNavigation />
       </div>
     </>
   );
