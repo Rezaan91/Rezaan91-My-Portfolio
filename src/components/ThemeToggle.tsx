@@ -2,7 +2,7 @@ import { Moon, Sun } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useTheme } from "@/hooks/use-theme";
 import { motion, AnimatePresence } from "framer-motion";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import {
   Tooltip,
   TooltipContent,
@@ -12,32 +12,18 @@ import {
 
 const ThemeToggle = () => {
   const { theme, toggleTheme } = useTheme();
-  const [showIntro, setShowIntro] = useState(false);
-
-  useEffect(() => {
-    const hasSeenThemeIntro = localStorage.getItem("hasSeenThemeIntro");
-    if (!hasSeenThemeIntro) {
-      setShowIntro(true);
-      // Auto-hide after 5 seconds
-      const timer = setTimeout(() => {
-        setShowIntro(false);
-        localStorage.setItem("hasSeenThemeIntro", "true");
-      }, 5000);
-      return () => clearTimeout(timer);
-    }
-  }, []);
+  const [showTooltip, setShowTooltip] = useState(false);
 
   const handleClick = () => {
     toggleTheme();
-    if (showIntro) {
-      setShowIntro(false);
-      localStorage.setItem("hasSeenThemeIntro", "true");
-    }
+    // Show tooltip for 4 seconds after each toggle
+    setShowTooltip(true);
+    setTimeout(() => setShowTooltip(false), 4000);
   };
 
   return (
     <TooltipProvider>
-      <Tooltip open={showIntro}>
+      <Tooltip open={showTooltip}>
         <TooltipTrigger asChild>
           <Button
             variant="ghost"
