@@ -9,6 +9,7 @@ import EducationSection from "@/components/EducationSection";
 import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
 import SectionNavigation from "@/components/SectionNavigation";
+// Portfolio page
 
 const Index = () => {
   return (
