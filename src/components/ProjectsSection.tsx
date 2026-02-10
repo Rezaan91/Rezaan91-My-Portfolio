@@ -13,6 +13,8 @@ const projects = [
     icon: Rocket,
     tags: ["React", "Node.js", "JavaScript", "Full Stack"],
     color: "from-primary to-accent",
+    repoUrl: "https://github.com/Rezaan91/FNB-App-Academy",
+    demoUrl: "",
   },
   {
     title: "Avengers",
@@ -20,6 +22,8 @@ const projects = [
     icon: Sparkles,
     tags: ["HTML", "CSS", "JavaScript", "UI/UX"],
     color: "from-accent to-secondary",
+    repoUrl: "https://github.com/Rezaan91/Avengers",
+    demoUrl: "",
   },
   {
     title: "PineCityZoo",
@@ -27,6 +31,8 @@ const projects = [
     icon: Smartphone,
     tags: ["React", "Responsive Design", "UX"],
     color: "from-primary to-secondary",
+    repoUrl: "https://github.com/Rezaan91/PineCityZoo",
+    demoUrl: "",
   },
   {
     title: "Bias Audit Report",
@@ -34,6 +40,8 @@ const projects = [
     icon: Shield,
     tags: ["Data Analysis", "Reporting", "Documentation"],
     color: "from-accent to-primary",
+    repoUrl: "https://github.com/Rezaan91/Bias-Audit-Report",
+    demoUrl: "",
   },
   {
     title: "Golden Arrow Mobile App",
@@ -41,6 +49,8 @@ const projects = [
     icon: Bus,
     tags: ["Mobile", "UI/UX", "Transportation"],
     color: "from-secondary to-accent",
+    repoUrl: "https://github.com/Rezaan91/Golden-Arrow-Mobile-App",
+    demoUrl: "",
   },
   {
     title: "Sentiment Analysis Dashboard",
@@ -48,6 +58,8 @@ const projects = [
     icon: BarChart3,
     tags: ["Data Viz", "Analytics", "Dashboard"],
     color: "from-primary to-accent",
+    repoUrl: "https://github.com/Rezaan91/Sentiment-Analysis-Dashboard",
+    demoUrl: "",
   },
 ];
 
