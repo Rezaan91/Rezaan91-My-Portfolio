@@ -1,53 +1,66 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { ArrowUp, ArrowDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { motion, AnimatePresence } from "framer-motion";
 
-const sections = ["home", "about", "skills", "experience", "education", "projects", "contact"];
+const sections = ["home", "about", "skills", "projects", "experience", "education", "contact"];
 
 const SectionNavigation = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [currentSectionIndex, setCurrentSectionIndex] = useState(0);
+  const [isScrolling, setIsScrolling] = useState(false);
+
+  const updateCurrentSection = useCallback(() => {
+    if (isScrolling) return;
+    
+    const viewportMiddle = window.scrollY + window.innerHeight / 3;
+    
+    let bestIndex = 0;
+    for (let i = sections.length - 1; i >= 0; i--) {
+      const el = document.getElementById(sections[i]);
+      if (el && el.offsetTop <= viewportMiddle) {
+        bestIndex = i;
+        break;
+      }
+    }
+    setCurrentSectionIndex(bestIndex);
+  }, [isScrolling]);
 
   useEffect(() => {
-    const toggleVisibility = () => {
+    const handleScroll = () => {
       setIsVisible(window.scrollY > 300);
+      updateCurrentSection();
     };
 
-    const updateCurrentSection = () => {
-      const scrollPosition = window.scrollY + window.innerHeight / 2;
-      
-      for (let i = sections.length - 1; i >= 0; i--) {
-        const element = document.getElementById(sections[i]);
-        if (element && element.offsetTop <= scrollPosition) {
-          setCurrentSectionIndex(i);
-          break;
-        }
-      }
-    };
-
-    window.addEventListener("scroll", toggleVisibility);
-    window.addEventListener("scroll", updateCurrentSection);
-    
-    return () => {
-      window.removeEventListener("scroll", toggleVisibility);
-      window.removeEventListener("scroll", updateCurrentSection);
-    };
-  }, []);
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [updateCurrentSection]);
 
   const scrollToSection = (direction: "up" | "down") => {
+    if (isScrolling) return;
+
     let targetIndex = currentSectionIndex;
-    
     if (direction === "up" && currentSectionIndex > 0) {
       targetIndex = currentSectionIndex - 1;
     } else if (direction === "down" && currentSectionIndex < sections.length - 1) {
       targetIndex = currentSectionIndex + 1;
     }
 
+    if (targetIndex === currentSectionIndex) return;
+
     const targetElement = document.getElementById(sections[targetIndex]);
-    if (targetElement) {
-      targetElement.scrollIntoView({ behavior: "smooth" });
-    }
+    if (!targetElement) return;
+
+    setIsScrolling(true);
+    setCurrentSectionIndex(targetIndex);
+
+    const targetTop = targetElement.offsetTop;
+    window.scrollTo({ top: targetTop, behavior: "smooth" });
+
+    // Wait for scroll to finish before allowing updates again
+    setTimeout(() => {
+      setIsScrolling(false);
+    }, 800);
   };
 
   return (
