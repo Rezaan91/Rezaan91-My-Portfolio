@@ -166,11 +166,19 @@ const ProjectsSection = () => {
                       {/* Links */}
                       <div className="flex gap-3">
                         <Button variant="glass" size="sm" asChild className="group-hover:bg-primary group-hover:text-primary-foreground transition-colors duration-300">
-                          <a href="https://github.com/Rezaan91" target="_blank" rel="noopener noreferrer">
+                          <a href={project.repoUrl} target="_blank" rel="noopener noreferrer">
                             <Github size={16} />
                             Code
                           </a>
                         </Button>
+                        {project.demoUrl && (
+                          <Button variant="glass" size="sm" asChild className="group-hover:bg-accent group-hover:text-accent-foreground transition-colors duration-300">
+                            <a href={project.demoUrl} target="_blank" rel="noopener noreferrer">
+                              <ExternalLink size={16} />
+                              Demo
+                            </a>
+                          </Button>
+                        )}
                       </div>
                     </div>
                   </motion.div>
