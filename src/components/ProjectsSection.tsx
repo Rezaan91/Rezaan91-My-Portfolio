@@ -2,11 +2,22 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import { Button } from "@/components/ui/button";
-import { ExternalLink, Github, Rocket, Shield, Bus, BarChart3, Smartphone, Sparkles } from "lucide-react";
+import { ExternalLink, Github, Rocket, Shield, Bus, BarChart3, Smartphone, Sparkles, Palette } from "lucide-react";
 import Autoplay from "embla-carousel-autoplay";
 import projectsBg from "@/assets/projects-bg.png";
+import canvaPortfolio from "@/assets/canva-portfolio.png";
 
 const projects = [
+  {
+    title: "Canva Creative Showcase",
+    description: "A showcase of creative design projects built with Canva, featuring graphics, presentations, and visual content.",
+    icon: Palette,
+    tags: ["Canva", "Graphic Design", "Creative", "Visual"],
+    color: "from-purple-500 to-pink-500",
+    repoUrl: "https://github.com/Rezaan91/my-canva-creative-showcase",
+    demoUrl: "https://mycreativecanvaprojects.netlify.app",
+    image: canvaPortfolio,
+  },
   {
     title: "FNB App Academy",
     description: "Full Stack Development training program focusing on modern web technologies, React, Node.js, and best practices in software development.",
@@ -134,13 +145,19 @@ const ProjectsSection = () => {
                   >
                     {/* Project Header */}
                     <div className={`h-32 bg-gradient-to-br ${project.color} p-6 flex items-center justify-center relative overflow-hidden`}>
-                      <div className="absolute inset-0 bg-background/20 group-hover:bg-background/10 transition-colors duration-300" />
-                      <motion.div
-                        whileHover={{ rotate: 12, scale: 1.1 }}
-                        transition={{ duration: 0.3 }}
-                      >
-                        <project.icon size={48} className="text-foreground relative z-10" />
-                      </motion.div>
+                      {project.image ? (
+                        <img src={project.image} alt={project.title} className="absolute inset-0 w-full h-full object-cover" />
+                      ) : (
+                        <>
+                          <div className="absolute inset-0 bg-background/20 group-hover:bg-background/10 transition-colors duration-300" />
+                          <motion.div
+                            whileHover={{ rotate: 12, scale: 1.1 }}
+                            transition={{ duration: 0.3 }}
+                          >
+                            <project.icon size={48} className="text-foreground relative z-10" />
+                          </motion.div>
+                        </>
+                      )}
                     </div>
                     
                     {/* Project Content */}
