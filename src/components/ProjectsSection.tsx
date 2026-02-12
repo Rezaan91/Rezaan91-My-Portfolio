@@ -6,6 +6,7 @@ import { ExternalLink, Github, Rocket, Shield, Bus, BarChart3, Smartphone, Spark
 import Autoplay from "embla-carousel-autoplay";
 import projectsBg from "@/assets/projects-bg.png";
 import canvaPortfolio from "@/assets/canva-portfolio.png";
+import fnbAcademy from "@/assets/fnb-academy.jpg";
 
 const projects = [
   {
@@ -24,8 +25,9 @@ const projects = [
     icon: Rocket,
     tags: ["React", "Node.js", "JavaScript", "Full Stack"],
     color: "from-primary to-accent",
-    repoUrl: "https://github.com/Rezaan91/FNB-App-Academy",
-    demoUrl: "",
+    repoUrl: "https://github.com/Rezaan91/My-FNB-app-academy-projects",
+    demoUrl: "https://myfnbappacademyprojects.netlify.app",
+    image: fnbAcademy,
   },
   {
     title: "Avengers",
