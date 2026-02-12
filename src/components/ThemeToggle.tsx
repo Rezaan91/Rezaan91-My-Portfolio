@@ -2,7 +2,7 @@ import { Moon, Sun } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useTheme } from "@/hooks/use-theme";
 import { motion, AnimatePresence } from "framer-motion";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import {
   Tooltip,
   TooltipContent,
@@ -14,11 +14,18 @@ const ThemeToggle = () => {
   const { theme, toggleTheme } = useTheme();
   const [showTooltip, setShowTooltip] = useState(false);
 
+  useEffect(() => {
+    const handler = () => {
+      setShowTooltip(true);
+      setTimeout(() => setShowTooltip(false), 6000);
+    };
+    window.addEventListener("showThemeTooltip", handler);
+    return () => window.removeEventListener("showThemeTooltip", handler);
+  }, []);
+
   const handleClick = () => {
     toggleTheme();
-    // Show tooltip for 4 seconds after each toggle
-    setShowTooltip(true);
-    setTimeout(() => setShowTooltip(false), 4000);
+    setShowTooltip(false);
   };
 
   return (
@@ -61,16 +68,18 @@ const ThemeToggle = () => {
           side="bottom" 
           className="bg-card border-primary/30 text-foreground px-4 py-3 max-w-[280px]"
         >
-          <p className="text-sm font-bold">Welcome! 👋</p>
-          <p className="text-xs text-muted-foreground mt-2">
-            Hi there! Welcome to my portfolio. I've added a light and dark mode feature for your viewing comfort.
-          </p>
-          <p className="text-xs text-muted-foreground mt-2">
-            You can toggle between themes anytime using the sun/moon icon. Your preference will be saved for future visits.
-          </p>
-          <p className="text-xs text-muted-foreground mt-2">
-            Enjoy exploring my work!
-          </p>
+          <div className="flex items-start gap-2">
+            <span className="text-primary mt-0.5">↑</span>
+            <div>
+              <p className="text-sm font-bold">Theme Toggle 🎨</p>
+              <p className="text-xs text-muted-foreground mt-2">
+                I've added a light and dark mode feature for your viewing comfort.
+              </p>
+              <p className="text-xs text-muted-foreground mt-2">
+                You can toggle between themes anytime using the sun/moon icon in the navigation bar. Your preference will be saved for future visits.
+              </p>
+            </div>
+          </div>
         </TooltipContent>
       </Tooltip>
     </TooltipProvider>
