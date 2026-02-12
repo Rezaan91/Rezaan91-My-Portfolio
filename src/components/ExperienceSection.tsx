@@ -184,8 +184,8 @@ const ExperienceSection = () => {
                 </CarouselItem>
               ))}
             </CarouselContent>
-            <CarouselPrevious className="hidden md:flex -left-12 glass-button border-0" />
-            <CarouselNext className="hidden md:flex -right-12 glass-button border-0" />
+            <CarouselPrevious className="-left-4 md:-left-12 glass-button border-0" />
+            <CarouselNext className="-right-4 md:-right-12 glass-button border-0" />
           </Carousel>
         </motion.div>
       </div>
