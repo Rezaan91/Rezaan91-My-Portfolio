@@ -22,6 +22,8 @@ const WelcomeModal = () => {
   const handleClose = () => {
     setOpen(false);
     sessionStorage.setItem("welcomeShown", "true");
+    // Notify ThemeToggle to show its intro tooltip
+    window.dispatchEvent(new CustomEvent("showThemeTooltip"));
   };
 
   return (
