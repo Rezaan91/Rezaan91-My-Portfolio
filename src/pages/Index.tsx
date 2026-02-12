@@ -9,6 +9,7 @@ import EducationSection from "@/components/EducationSection";
 import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
 import SectionNavigation from "@/components/SectionNavigation";
+import WelcomeModal from "@/components/WelcomeModal";
 // Portfolio page
 
 const Index = () => {
@@ -40,6 +41,7 @@ const Index = () => {
         </main>
         <Footer />
         <SectionNavigation />
+        <WelcomeModal />
       </div>
     </>
   );
