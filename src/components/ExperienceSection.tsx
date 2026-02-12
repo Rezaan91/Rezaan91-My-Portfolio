@@ -2,7 +2,6 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import { Briefcase, Building, Users, FileText, Phone, Heart } from "lucide-react";
-import Autoplay from "embla-carousel-autoplay";
 import experienceBg from "@/assets/experience-bg.png";
 
 const experiences = [
@@ -132,12 +131,6 @@ const ExperienceSection = () => {
               align: "start",
               loop: true,
             }}
-            plugins={[
-              Autoplay({
-                delay: 3500,
-                stopOnInteraction: true,
-              }),
-            ]}
             className="w-full"
           >
             <CarouselContent className="-ml-4">
