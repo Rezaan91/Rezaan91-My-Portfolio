@@ -1,7 +1,6 @@
 import { motion } from "framer-motion";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import { GraduationCap, Award, BookOpen, Mic, PenLine, Brain } from "lucide-react";
-import Autoplay from "embla-carousel-autoplay";
 import educationBg from "@/assets/education-bg.png";
 
 const education = [
@@ -132,12 +131,6 @@ const EducationSection = () => {
               align: "start",
               loop: true,
             }}
-            plugins={[
-              Autoplay({
-                delay: 3000,
-                stopOnInteraction: true,
-              }),
-            ]}
             className="w-full"
           >
             <CarouselContent className="-ml-4">
