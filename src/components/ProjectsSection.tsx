@@ -6,6 +6,9 @@ import { ExternalLink, Github, Rocket, Shield, Bus, BarChart3, Smartphone, Spark
 import projectsBg from "@/assets/projects-bg.png";
 import canvaPortfolio from "@/assets/canva-portfolio.png";
 import fnbAcademy from "@/assets/fnb-academy.jpg";
+import biasAuditReport from "@/assets/bias-audit-report.jpg";
+import goldenArrow from "@/assets/golden-arrow.jpg";
+import sentimentDashboard from "@/assets/sentiment-dashboard.jpg";
 
 const projects = [
   {
@@ -54,6 +57,7 @@ const projects = [
     color: "from-accent to-primary",
     repoUrl: "https://github.com/Rezaan91/Bias-Audit-Report",
     demoUrl: "",
+    image: biasAuditReport,
   },
   {
     title: "Golden Arrow Mobile App",
@@ -63,6 +67,7 @@ const projects = [
     color: "from-secondary to-accent",
     repoUrl: "https://github.com/Rezaan91/Golden-Arrow-Mobile-App",
     demoUrl: "",
+    image: goldenArrow,
   },
   {
     title: "Sentiment Analysis Dashboard",
@@ -72,6 +77,7 @@ const projects = [
     color: "from-primary to-accent",
     repoUrl: "https://github.com/Rezaan91/Sentiment-Analysis-Dashboard",
     demoUrl: "",
+    image: sentimentDashboard,
   },
 ];
 
