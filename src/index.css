@@ -168,7 +168,7 @@
     background: hsla(180, 20%, 100%, 0.85);
     backdrop-filter: blur(8px);
     border: 1px solid hsla(174, 40%, 40%, 0.4);
-    color: hsl(180, 25%, 15%);
+    color: hsl(0, 0%, 0%);
     transition: all 0.3s ease;
   }
 
