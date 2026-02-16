@@ -27,7 +27,7 @@
 
     /* Muted Light */
     --muted: 180 15% 92%;
-    --muted-foreground: 180 15% 40%;
+    --muted-foreground: 180 20% 22%;
 
     /* Magenta Accent #A02B93 */
     --accent: 306 58% 40%;
@@ -90,7 +90,7 @@
 
     /* Muted Dark */
     --muted: 220 15% 18%;
-    --muted-foreground: 180 10% 60%;
+    --muted-foreground: 180 10% 78%;
 
     /* Magenta Accent */
     --accent: 306 60% 55%;
