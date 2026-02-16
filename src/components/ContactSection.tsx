@@ -125,7 +125,7 @@ const ContactSection = () => {
                   Ready to Collaborate?
                 </h3>
                 
-                <p className="text-muted-foreground mb-8 leading-relaxed">
+                <p className="text-foreground mb-8 leading-relaxed">
                   I'm currently looking for new opportunities. Whether you have a project 
                   in mind or just want to chat, feel free to reach out!
                 </p>

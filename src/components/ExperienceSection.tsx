@@ -163,11 +163,11 @@ const ExperienceSection = () => {
 
                     <h3 className="font-display font-semibold text-lg mb-1">{exp.title}</h3>
                     <p className="text-primary text-sm mb-1">{exp.company}</p>
-                    <p className="text-muted-foreground text-xs mb-4">{exp.period}</p>
+                    <p className="text-foreground text-xs mb-4">{exp.period}</p>
 
                     <ul className="space-y-2">
                       {exp.responsibilities.map((resp) => (
-                        <li key={resp} className="text-sm text-muted-foreground flex items-start gap-2">
+                        <li key={resp} className="text-sm text-foreground flex items-start gap-2">
                           <span className="w-1.5 h-1.5 rounded-full bg-accent mt-2 flex-shrink-0" />
                           {resp}
                         </li>

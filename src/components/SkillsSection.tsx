@@ -149,13 +149,13 @@ const SkillsSection = () => {
                       >
                         <category.icon size={24} />
                       </motion.div>
-                      <h3 className="font-display font-semibold text-lg group-hover:text-primary transition-colors duration-300">{category.title}</h3>
+                      <h3 className="font-display font-semibold text-lg text-foreground group-hover:text-primary transition-colors duration-300">{category.title}</h3>
                     </div>
                     <ul className="space-y-2">
                       {category.skills.map((skill, skillIndex) => (
                         <motion.li 
                           key={skill} 
-                          className="text-sm text-muted-foreground flex items-start gap-2 group-hover:text-foreground transition-colors duration-300"
+                          className="text-sm text-foreground flex items-start gap-2 transition-colors duration-300"
                           initial={{ opacity: 0, x: -10 }}
                           whileInView={{ opacity: 1, x: 0 }}
                           transition={{ delay: skillIndex * 0.05 }}

@@ -154,7 +154,7 @@ const EducationSection = () => {
 
                     <h3 className="font-display font-semibold text-lg mb-2 leading-tight">{edu.title}</h3>
                     <p className="text-primary text-sm mb-1">{edu.institution}</p>
-                    <p className="text-muted-foreground text-xs mb-3">{edu.period}</p>
+                    <p className="text-foreground text-xs mb-3">{edu.period}</p>
 
                     <span className="inline-flex items-center gap-1 text-xs text-green-400">
                       <span className="w-2 h-2 rounded-full bg-green-400" />
@@ -194,10 +194,10 @@ const EducationSection = () => {
                   <div className="p-2 rounded-lg bg-secondary/20 text-secondary group-hover:bg-secondary group-hover:text-secondary-foreground transition-colors">
                     <course.icon size={18} />
                   </div>
-                  <span className="text-xs text-muted-foreground">{course.year}</span>
+                  <span className="text-xs text-foreground">{course.year}</span>
                 </div>
                 <h4 className="font-display font-semibold text-sm mb-2">{course.title}</h4>
-                <p className="text-xs text-muted-foreground leading-relaxed">{course.topics}</p>
+                <p className="text-xs text-foreground leading-relaxed">{course.topics}</p>
               </motion.div>
             ))}
           </div>
