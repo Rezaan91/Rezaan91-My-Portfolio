@@ -71,7 +71,7 @@ const AboutSection = () => {
                 <div className="absolute inset-0 -m-3 rounded-full border-2 border-dashed border-accent/30 animate-spin" style={{ animationDuration: "30s" }} />
               </div>
               
-              <p className="text-lg text-muted-foreground leading-relaxed text-center">
+              <p className="text-lg text-foreground leading-relaxed text-center">
                 Welcome to my portfolio! I'm Rezaan, a creative Full Stack Developer with a love for design and technology. With years of experience in crafting digital experiences, I bring ideas to life through thoughtful design and clean code. My journey spans from IT Technical Support to Full Stack Development, complemented by certifications in Project Management and Business Administration. I thrive on creating user-centered applications that solve real-world problems while delivering exceptional experiences. When I'm not designing or coding, you can find me exploring new creative tools, learning about the latest design trends.
               </p>
             </div>
@@ -93,7 +93,7 @@ const AboutSection = () => {
                   </div>
                   <div>
                     <h3 className="font-display font-semibold text-lg mb-2">{item.title}</h3>
-                    <p className="text-muted-foreground text-sm leading-relaxed">{item.description}</p>
+                    <p className="text-foreground text-sm leading-relaxed">{item.description}</p>
                   </div>
                 </div>
               </motion.div>

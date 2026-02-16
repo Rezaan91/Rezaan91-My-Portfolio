@@ -164,14 +164,14 @@ const ProjectsSection = () => {
                     {/* Project Content */}
                     <div className="p-6">
                       <h3 className="font-display font-semibold text-xl mb-3 group-hover:text-primary transition-colors duration-300">{project.title}</h3>
-                      <p className="text-muted-foreground text-sm mb-4 leading-relaxed">{project.description}</p>
+                      <p className="text-foreground text-sm mb-4 leading-relaxed">{project.description}</p>
                       
                       {/* Tags */}
                       <div className="flex flex-wrap gap-2 mb-4">
                         {project.tags.map((tag, tagIndex) => (
                           <motion.span 
                             key={tag} 
-                            className="px-2 py-1 text-xs rounded-full bg-muted text-muted-foreground group-hover:bg-primary/10 group-hover:text-primary transition-colors duration-300"
+                            className="px-2 py-1 text-xs rounded-full bg-muted text-foreground group-hover:bg-primary/10 group-hover:text-primary transition-colors duration-300"
                             initial={{ opacity: 0, scale: 0.8 }}
                             whileInView={{ opacity: 1, scale: 1 }}
                             transition={{ delay: tagIndex * 0.05 }}
