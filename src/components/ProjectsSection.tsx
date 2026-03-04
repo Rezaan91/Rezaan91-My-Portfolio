@@ -2,13 +2,15 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import { Button } from "@/components/ui/button";
-import { ExternalLink, Github, Rocket, Shield, Bus, BarChart3, Smartphone, Sparkles, Palette } from "lucide-react";
+import { ExternalLink, Github, Rocket, Shield, Bus, BarChart3, GraduationCap, Search, Palette } from "lucide-react";
 import projectsBg from "@/assets/projects-bg.png";
 import canvaPortfolio from "@/assets/canva-portfolio.png";
 import fnbAcademy from "@/assets/fnb-academy.jpg";
 import biasAuditReport from "@/assets/bias-audit-report.jpg";
 import goldenArrow from "@/assets/golden-arrow.jpg";
 import sentimentDashboard from "@/assets/sentiment-dashboard.jpg";
+import talentBloom from "@/assets/talent-bloom.jpeg";
+import lula from "@/assets/lula.png";
 
 const projects = [
   {
@@ -32,22 +34,24 @@ const projects = [
     image: fnbAcademy,
   },
   {
-    title: "Avengers",
-    description: "Interactive web application project showcasing frontend development skills with dynamic content and engaging user interface design.",
-    icon: Sparkles,
-    tags: ["HTML", "CSS", "JavaScript", "UI/UX"],
-    color: "from-accent to-secondary",
-    repoUrl: "https://github.com/Rezaan91/Avengers",
-    demoUrl: "",
+    title: "Talent Bloom",
+    description: "Student portal application for talent development and academic management, built to connect students with learning opportunities.",
+    icon: GraduationCap,
+    tags: ["React", "Student Portal", "UI/UX", "Education"],
+    color: "from-purple-500 to-indigo-500",
+    repoUrl: "https://github.com/Rezaan91/Talent-Bloom",
+    demoUrl: "https://musa621.github.io/Capaciti_Services/",
+    image: talentBloom,
   },
   {
-    title: "PineCityZoo",
-    description: "Zoo management web application featuring interactive exhibits, visitor information, and responsive design principles.",
-    icon: Smartphone,
-    tags: ["React", "Responsive Design", "UX"],
-    color: "from-primary to-secondary",
-    repoUrl: "https://github.com/Rezaan91/PineCityZoo",
-    demoUrl: "",
+    title: "Lula",
+    description: "Job vacancy platform connecting South African job seekers with employers, featuring intuitive search and modern UI.",
+    icon: Search,
+    tags: ["HTML", "CSS", "JavaScript", "Job Portal"],
+    color: "from-green-500 to-teal-500",
+    repoUrl: "https://github.com/Rezaan91/Lula",
+    demoUrl: "https://lulasearch.netlify.app/home.html",
+    image: lula,
   },
   {
     title: "Bias Audit Report",
