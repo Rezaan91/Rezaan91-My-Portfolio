@@ -2,13 +2,15 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import { Button } from "@/components/ui/button";
-import { ExternalLink, Github, Rocket, Shield, Bus, BarChart3, Smartphone, Sparkles, Palette } from "lucide-react";
+import { ExternalLink, Github, Rocket, Shield, Bus, BarChart3, GraduationCap, Search, Palette } from "lucide-react";
 import projectsBg from "@/assets/projects-bg.png";
 import canvaPortfolio from "@/assets/canva-portfolio.png";
 import fnbAcademy from "@/assets/fnb-academy.jpg";
 import biasAuditReport from "@/assets/bias-audit-report.jpg";
 import goldenArrow from "@/assets/golden-arrow.jpg";
 import sentimentDashboard from "@/assets/sentiment-dashboard.jpg";
+import talentBloom from "@/assets/talent-bloom.jpeg";
+import lula from "@/assets/lula.png";
 
 const projects = [
   {
