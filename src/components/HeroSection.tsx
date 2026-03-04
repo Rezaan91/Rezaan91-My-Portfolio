@@ -111,9 +111,6 @@ const HeroSection = () => {
               <Button variant="hero" asChild>
                 <a href="#projects">View My Work</a>
               </Button>
-              <Button variant="hero" asChild>
-                <a href="mailto:rezaan91@gmail.com">Hire Me</a>
-              </Button>
               <Button variant="glass" size="lg" asChild>
                 <a href="#contact">Get in Touch</a>
               </Button>
