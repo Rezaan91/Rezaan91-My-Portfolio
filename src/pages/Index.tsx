@@ -25,7 +25,8 @@ const Index = () => {
         <meta property="og:title" content="Rezaan Achmat | Full Stack Developer Portfolio" />
         <meta property="og:description" content="Full Stack Developer with a passion for building innovative solutions. Skilled in JavaScript, React, Node.js, and UI/UX design." />
         <meta property="og:type" content="website" />
-        <link rel="canonical" href="https://rezaan-portfolio.lovable.app" />
+        <meta property="og:url" content="https://rezaan-achmat-my-portfolio.netlify.app/" />
+        <link rel="canonical" href="https://rezaan-achmat-my-portfolio.netlify.app/" />
       </Helmet>
       
       <div className="min-h-screen bg-background">

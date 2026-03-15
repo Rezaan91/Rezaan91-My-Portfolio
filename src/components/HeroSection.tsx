@@ -122,6 +122,8 @@ const HeroSection = () => {
                 href="https://github.com/Rezaan91"
                 target="_blank"
                 rel="noopener noreferrer"
+                aria-label="Open GitHub profile"
+                title="GitHub"
                 className="glass-button p-3 rounded-full hover:scale-110 transition-transform"
               >
                 <Github size={20} />
@@ -130,12 +132,16 @@ const HeroSection = () => {
                 href="https://www.linkedin.com/in/rezaan-achmat-59050774/"
                 target="_blank"
                 rel="noopener noreferrer"
+                aria-label="Open LinkedIn profile"
+                title="LinkedIn"
                 className="glass-button p-3 rounded-full hover:scale-110 transition-transform"
               >
                 <Linkedin size={20} />
               </a>
               <a
                 href="mailto:rezaan91@gmail.com"
+                aria-label="Send email to rezaan91@gmail.com"
+                title="Email"
                 className="glass-button p-3 rounded-full hover:scale-110 transition-transform"
               >
                 <Mail size={20} />

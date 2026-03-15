@@ -1,4 +1,4 @@
-import { Github, Linkedin, Mail, Heart } from "lucide-react";
+import { Github, Linkedin, Mail } from "lucide-react";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -8,8 +8,7 @@ const Footer = () => {
       <div className="container mx-auto px-4">
         <div className="flex flex-col md:flex-row items-center justify-between gap-4">
           <div className="flex items-center gap-2 text-muted-foreground text-sm">
-            <span>© {currentYear} Rezaan Achmat. Made with</span>
-            <Heart size={14} className="text-accent fill-accent" />
+            <span>© {currentYear} Rezaan Achmat.</span>
           </div>
 
           <div className="flex items-center gap-4">
