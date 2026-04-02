@@ -60,7 +60,7 @@ const projects = [
     tags: ["Data Analysis", "Reporting", "Documentation"],
     color: "from-accent to-primary",
     repoUrl: "https://github.com/Rezaan91/Bias-Audit-Report",
-    demoUrl: "https://acrobat.adobe.com/id/urn:aaid:sc:EU:88d13be2-71e6-4cfc-a5ca-dc489196cb49",
+    demoUrl: "https://colab.research.google.com/drive/1kS-ZFR6zg10128la3y-8WQbrQZcmZZBR?usp=sharing",
     image: biasAuditReport,
   },
   {
