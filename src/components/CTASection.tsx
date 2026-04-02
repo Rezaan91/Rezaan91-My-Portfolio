@@ -24,17 +24,9 @@ const CTASection = () => {
             <p className="text-foreground text-lg leading-relaxed mb-4">
               I'm currently open to junior frontend, full-stack, or UI/UX opportunities where I can contribute, learn, and grow.
             </p>
-            <p className="text-foreground text-lg leading-relaxed mb-8">
+            <p className="text-foreground text-lg leading-relaxed">
               If you're looking for someone who can combine development with design thinking to build user-focused digital experiences, feel free to reach out.
             </p>
-
-            <p className="text-foreground font-medium mb-2">Contact me:</p>
-            <Button variant="hero" size="lg" asChild>
-              <a href="mailto:rezaan91@gmail.com">
-                <Mail size={18} />
-                rezaan91@gmail.com
-              </a>
-            </Button>
           </div>
         </motion.div>
       </div>
