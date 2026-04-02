@@ -4,8 +4,17 @@ import { Button } from "@/components/ui/button";
 import { ArrowDown, Github, Linkedin, Mail } from "lucide-react";
 import backgroundImage from "@/assets/background.png";
 
+const taglines = [
+  "Frontend Developer",
+  "UI/UX Designer",
+  "Full Stack Developer",
+];
+
 const HeroSection = () => {
   const sectionRef = useRef<HTMLElement>(null);
+  const [currentTagline, setCurrentTagline] = useState(0);
+  const [displayText, setDisplayText] = useState("");
+  const [isDeleting, setIsDeleting] = useState(false);
 
   const { scrollYProgress } = useScroll({
     target: sectionRef,
