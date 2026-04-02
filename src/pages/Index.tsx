@@ -7,6 +7,7 @@ import ProjectsSection from "@/components/ProjectsSection";
 import ExperienceSection from "@/components/ExperienceSection";
 import EducationSection from "@/components/EducationSection";
 import ContactSection from "@/components/ContactSection";
+import CTASection from "@/components/CTASection";
 import Footer from "@/components/Footer";
 import SectionNavigation from "@/components/SectionNavigation";
 import WelcomeModal from "@/components/WelcomeModal";
@@ -39,6 +40,7 @@ const Index = () => {
           <ExperienceSection />
           <EducationSection />
           <ContactSection />
+          <CTASection />
         </main>
         <Footer />
         <SectionNavigation />

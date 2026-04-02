@@ -71,9 +71,20 @@ const AboutSection = () => {
                 <div className="absolute inset-0 -m-3 rounded-full border-2 border-dashed border-accent/30 animate-spin" style={{ animationDuration: "30s" }} />
               </div>
               
-              <p className="text-lg text-foreground leading-relaxed text-center">
-                Welcome to my portfolio! I'm Rezaan, a creative Full Stack Developer with a love for design and technology. With years of experience in crafting digital experiences, I bring ideas to life through thoughtful design and clean code. My journey spans from IT Technical Support to Full Stack Development, complemented by certifications in Project Management and Business Administration. I thrive on creating user-centered applications that solve real-world problems while delivering exceptional experiences. When I'm not designing or coding, you can find me exploring new creative tools, learning about the latest design trends.
-              </p>
+              <div className="text-lg text-foreground leading-relaxed text-center space-y-4">
+                <p>
+                  I'm a Frontend Developer with a strong foundation in UI/UX design and full-stack development. I enjoy turning ideas into real-world applications that solve problems and deliver meaningful user experiences.
+                </p>
+                <p>
+                  My journey into tech started with a passion for design, which led me to complete an Advanced Diploma in Graphic Design. I later expanded into development, gaining hands-on experience building web applications using JavaScript and Python.
+                </p>
+                <p>
+                  What sets me apart is my ability to think both technically and creatively. I don't just build interfaces — I design experiences. I focus on usability, responsiveness, and clean structure, ensuring that every project I work on is both functional and visually effective.
+                </p>
+                <p>
+                  I'm continuously learning, building, and improving, with a strong interest in frontend development, UI/UX, and modern web technologies.
+                </p>
+              </div>
             </div>
           </motion.div>
 

@@ -1,21 +1,11 @@
 import { motion, useScroll, useTransform } from "framer-motion";
-import { useRef, useState, useEffect } from "react";
+import { useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { ArrowDown, Github, Linkedin, Mail } from "lucide-react";
 import backgroundImage from "@/assets/background.png";
 
-
-const taglines = [
-  "Transforming innovative ideas into cutting-edge digital solutions through code, creativity, and AI-powered technology",
-  "Building seamless user experiences with modern web technologies",
-  "Full Stack Developer passionate about creating impactful applications"
-];
-
 const HeroSection = () => {
   const sectionRef = useRef<HTMLElement>(null);
-  const [currentTagline, setCurrentTagline] = useState(0);
-  const [displayText, setDisplayText] = useState("");
-  const [isDeleting, setIsDeleting] = useState(false);
 
   const { scrollYProgress } = useScroll({
     target: sectionRef,
@@ -23,34 +13,6 @@ const HeroSection = () => {
   });
   const y = useTransform(scrollYProgress, [0, 1], [0, 300]);
   const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
-
-  useEffect(() => {
-    const currentText = taglines[currentTagline];
-    const typeSpeed = isDeleting ? 30 : 50;
-    const pauseTime = isDeleting ? 500 : 2000;
-
-    const handleTyping = () => {
-      if (!isDeleting) {
-        if (displayText.length < currentText.length) {
-          setDisplayText(currentText.slice(0, displayText.length + 1));
-        } else {
-          setTimeout(() => setIsDeleting(true), pauseTime);
-          return;
-        }
-      } else {
-        if (displayText.length > 0) {
-          setDisplayText(displayText.slice(0, -1));
-        } else {
-          setIsDeleting(false);
-          setCurrentTagline((prev) => (prev + 1) % taglines.length);
-          return;
-        }
-      }
-    };
-
-    const timer = setTimeout(handleTyping, typeSpeed);
-    return () => clearTimeout(timer);
-  }, [displayText, isDeleting, currentTagline]);
 
   return (
     <section
@@ -89,30 +51,28 @@ const HeroSection = () => {
               transition={{ delay: 0.4 }}
               className="text-primary font-medium mb-4"
             >
-              Hello, I'm
+              Hi, I'm
             </motion.p>
             
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold mb-4">
               <span className="gradient-text">Rezaan Achmat</span>
             </h1>
             
-            <p className="text-lg md:text-xl text-muted-foreground mb-6 leading-relaxed">
-              Aspiring Software & Web Developer | IT Support | Digital Problem-Solver
+            <p className="text-lg md:text-xl text-foreground mb-6 leading-relaxed font-medium">
+              Frontend Developer | UI/UX Designer
             </p>
             
-            {/* Typing Animation Tagline */}
-            <p className="text-muted-foreground mb-8 leading-relaxed min-h-[4rem]">
-              <span className="text-foreground">{displayText}</span>
-              <span className="inline-block w-0.5 h-5 bg-primary ml-1 animate-pulse" />
+            <p className="text-foreground mb-8 leading-relaxed max-w-lg mx-auto">
+              I build responsive, user-focused web applications that combine clean code with intuitive design. With a background in both full-stack development and graphic design, I focus on creating digital experiences that are not only functional, but visually engaging and easy to use.
             </p>
 
-            {/* CTA Buttons */}
-            <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
+            {/* CTA Button */}
+            <div className="flex justify-center mb-8">
               <Button variant="hero" asChild>
-                <a href="#projects">View My Work</a>
-              </Button>
-              <Button variant="glass" size="lg" asChild>
-                <a href="#contact">Get in Touch</a>
+                <a href="#projects">
+                  View My Work
+                  <ArrowDown size={18} className="ml-2" />
+                </a>
               </Button>
             </div>
 
@@ -163,8 +123,6 @@ const HeroSection = () => {
           </a>
         </motion.div>
       </motion.div>
-
-      
     </section>
   );
 };
