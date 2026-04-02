@@ -23,6 +23,34 @@ const HeroSection = () => {
   const y = useTransform(scrollYProgress, [0, 1], [0, 300]);
   const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
 
+  useEffect(() => {
+    const currentText = taglines[currentTagline];
+    const typeSpeed = isDeleting ? 30 : 50;
+    const pauseTime = isDeleting ? 500 : 2000;
+
+    const handleTyping = () => {
+      if (!isDeleting) {
+        if (displayText.length < currentText.length) {
+          setDisplayText(currentText.slice(0, displayText.length + 1));
+        } else {
+          setTimeout(() => setIsDeleting(true), pauseTime);
+          return;
+        }
+      } else {
+        if (displayText.length > 0) {
+          setDisplayText(displayText.slice(0, -1));
+        } else {
+          setIsDeleting(false);
+          setCurrentTagline((prev) => (prev + 1) % taglines.length);
+          return;
+        }
+      }
+    };
+
+    const timer = setTimeout(handleTyping, typeSpeed);
+    return () => clearTimeout(timer);
+  }, [displayText, isDeleting, currentTagline]);
+
   return (
     <section
       ref={sectionRef}
