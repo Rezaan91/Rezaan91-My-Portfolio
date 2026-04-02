@@ -95,8 +95,9 @@ const HeroSection = () => {
               <span className="gradient-text">Rezaan Achmat</span>
             </h1>
             
-            <p className="text-lg md:text-xl text-foreground mb-6 leading-relaxed font-medium">
-              Frontend Developer | UI/UX Designer
+            <p className="text-lg md:text-xl text-foreground mb-6 leading-relaxed font-medium min-h-[2rem]">
+              <span className="text-primary">{displayText}</span>
+              <span className="inline-block w-0.5 h-5 bg-primary ml-1 animate-pulse" />
             </p>
             
             <p className="text-foreground mb-8 leading-relaxed max-w-lg mx-auto">
