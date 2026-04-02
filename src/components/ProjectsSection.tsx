@@ -60,7 +60,7 @@ const projects = [
     tags: ["Data Analysis", "Reporting", "Documentation"],
     color: "from-accent to-primary",
     repoUrl: "https://github.com/Rezaan91/Bias-Audit-Report",
-    demoUrl: "",
+    demoUrl: "https://acrobat.adobe.com/id/urn:aaid:sc:EU:88d13be2-71e6-4cfc-a5ca-dc489196cb49",
     image: biasAuditReport,
   },
   {
@@ -70,7 +70,7 @@ const projects = [
     tags: ["Mobile", "UI/UX", "Transportation"],
     color: "from-secondary to-accent",
     repoUrl: "https://github.com/Rezaan91/Golden-Arrow-Mobile-App",
-    demoUrl: "",
+    demoUrl: "https://cnirku.readdy.co/login",
     image: goldenArrow,
   },
   {
@@ -80,7 +80,7 @@ const projects = [
     tags: ["Data Viz", "Analytics", "Dashboard"],
     color: "from-primary to-accent",
     repoUrl: "https://github.com/Rezaan91/Sentiment-Analysis-Dashboard",
-    demoUrl: "",
+    demoUrl: "https://codecrafters-week5.lovable.app/",
     image: sentimentDashboard,
   },
 ];
