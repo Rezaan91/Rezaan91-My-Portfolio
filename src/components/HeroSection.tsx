@@ -89,30 +89,28 @@ const HeroSection = () => {
               transition={{ delay: 0.4 }}
               className="text-primary font-medium mb-4"
             >
-              Hello, I'm
+              Hi, I'm
             </motion.p>
             
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold mb-4">
               <span className="gradient-text">Rezaan Achmat</span>
             </h1>
             
-            <p className="text-lg md:text-xl text-muted-foreground mb-6 leading-relaxed">
-              Aspiring Software & Web Developer | IT Support | Digital Problem-Solver
+            <p className="text-lg md:text-xl text-foreground mb-6 leading-relaxed font-medium">
+              Frontend Developer | UI/UX Designer
             </p>
             
-            {/* Typing Animation Tagline */}
-            <p className="text-muted-foreground mb-8 leading-relaxed min-h-[4rem]">
-              <span className="text-foreground">{displayText}</span>
-              <span className="inline-block w-0.5 h-5 bg-primary ml-1 animate-pulse" />
+            <p className="text-foreground mb-8 leading-relaxed max-w-lg mx-auto">
+              I build responsive, user-focused web applications that combine clean code with intuitive design. With a background in both full-stack development and graphic design, I focus on creating digital experiences that are not only functional, but visually engaging and easy to use.
             </p>
 
-            {/* CTA Buttons */}
-            <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
+            {/* CTA Button */}
+            <div className="flex justify-center mb-8">
               <Button variant="hero" asChild>
-                <a href="#projects">View My Work</a>
-              </Button>
-              <Button variant="glass" size="lg" asChild>
-                <a href="#contact">Get in Touch</a>
+                <a href="#projects">
+                  View My Work
+                  <ArrowDown size={18} className="ml-2" />
+                </a>
               </Button>
             </div>
 
