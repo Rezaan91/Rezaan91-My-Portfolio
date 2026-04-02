@@ -70,7 +70,7 @@ const projects = [
     tags: ["Mobile", "UI/UX", "Transportation"],
     color: "from-secondary to-accent",
     repoUrl: "https://github.com/Rezaan91/Golden-Arrow-Mobile-App",
-    demoUrl: "",
+    demoUrl: "https://cnirku.readdy.co/login",
     image: goldenArrow,
   },
   {
