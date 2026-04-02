@@ -80,7 +80,7 @@ const projects = [
     tags: ["Data Viz", "Analytics", "Dashboard"],
     color: "from-primary to-accent",
     repoUrl: "https://github.com/Rezaan91/Sentiment-Analysis-Dashboard",
-    demoUrl: "",
+    demoUrl: "https://codecrafters-week5.lovable.app/",
     image: sentimentDashboard,
   },
 ];
