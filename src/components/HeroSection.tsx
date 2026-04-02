@@ -13,9 +13,6 @@ const taglines = [
 
 const HeroSection = () => {
   const sectionRef = useRef<HTMLElement>(null);
-  const [currentTagline, setCurrentTagline] = useState(0);
-  const [displayText, setDisplayText] = useState("");
-  const [isDeleting, setIsDeleting] = useState(false);
 
   const { scrollYProgress } = useScroll({
     target: sectionRef,
