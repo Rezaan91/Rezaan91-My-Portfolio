@@ -1,11 +1,20 @@
 import { motion, useScroll, useTransform } from "framer-motion";
-import { useRef } from "react";
+import { useRef, useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { ArrowDown, Github, Linkedin, Mail } from "lucide-react";
 import backgroundImage from "@/assets/background.png";
 
+const taglines = [
+  "Frontend Developer",
+  "UI/UX Designer",
+  "Full Stack Developer",
+];
+
 const HeroSection = () => {
   const sectionRef = useRef<HTMLElement>(null);
+  const [currentTagline, setCurrentTagline] = useState(0);
+  const [displayText, setDisplayText] = useState("");
+  const [isDeleting, setIsDeleting] = useState(false);
 
   const { scrollYProgress } = useScroll({
     target: sectionRef,
@@ -13,6 +22,34 @@ const HeroSection = () => {
   });
   const y = useTransform(scrollYProgress, [0, 1], [0, 300]);
   const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
+
+  useEffect(() => {
+    const currentText = taglines[currentTagline];
+    const typeSpeed = isDeleting ? 30 : 50;
+    const pauseTime = isDeleting ? 500 : 2000;
+
+    const handleTyping = () => {
+      if (!isDeleting) {
+        if (displayText.length < currentText.length) {
+          setDisplayText(currentText.slice(0, displayText.length + 1));
+        } else {
+          setTimeout(() => setIsDeleting(true), pauseTime);
+          return;
+        }
+      } else {
+        if (displayText.length > 0) {
+          setDisplayText(displayText.slice(0, -1));
+        } else {
+          setIsDeleting(false);
+          setCurrentTagline((prev) => (prev + 1) % taglines.length);
+          return;
+        }
+      }
+    };
+
+    const timer = setTimeout(handleTyping, typeSpeed);
+    return () => clearTimeout(timer);
+  }, [displayText, isDeleting, currentTagline]);
 
   return (
     <section
@@ -58,8 +95,9 @@ const HeroSection = () => {
               <span className="gradient-text">Rezaan Achmat</span>
             </h1>
             
-            <p className="text-lg md:text-xl text-foreground mb-6 leading-relaxed font-medium">
-              Frontend Developer | UI/UX Designer
+            <p className="text-lg md:text-xl text-foreground mb-6 leading-relaxed font-medium min-h-[2rem]">
+              <span className="text-primary">{displayText}</span>
+              <span className="inline-block w-0.5 h-5 bg-primary ml-1 animate-pulse" />
             </p>
             
             <p className="text-foreground mb-8 leading-relaxed max-w-lg mx-auto">
