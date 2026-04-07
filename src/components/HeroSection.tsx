@@ -5,9 +5,9 @@ import { ArrowDown, Github, Linkedin, Mail } from "lucide-react";
 import backgroundImage from "@/assets/background.png";
 
 const taglines = [
-  "Frontend Developer",
+  "Full-Stack Developer",
   "UI/UX Designer",
-  "Full Stack Developer",
+  "Builder behind Ubuntu Mzansi Tech",
 ];
 
 const HeroSection = () => {
@@ -94,14 +94,18 @@ const HeroSection = () => {
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold mb-4">
               <span className="gradient-text">Rezaan Achmat</span>
             </h1>
-            
+
             <p className="text-lg md:text-xl text-foreground mb-6 leading-relaxed font-medium min-h-[2rem]">
               <span className="text-primary">{displayText}</span>
               <span className="inline-block w-0.5 h-5 bg-primary ml-1 animate-pulse" />
             </p>
+
+            <p className="text-xl md:text-2xl font-display font-semibold text-foreground mb-4">
+              I Build Scalable, User-Focused Digital Platforms.
+            </p>
             
             <p className="text-foreground mb-8 leading-relaxed max-w-lg mx-auto">
-              I build responsive, user-focused web applications that combine clean code with intuitive design. With a background in both full-stack development and graphic design, I focus on creating digital experiences that are not only functional, but visually engaging and easy to use.
+              Full-stack developer with a design edge, creating responsive web apps, developer tools, and data-driven systems powered by APIs, microservices, and AI. I turn ideas into intuitive, high-impact digital experiences.
             </p>
 
             {/* CTA Button */}
