@@ -37,6 +37,7 @@ After pushing to `main`, GitHub Actions builds the site and publishes it.
 Expected Pages URL:
 
 - https://rezaan91.github.io/Rezaan91-My-Portfolio/
+- ra-my-portfolio.netlify.app
 
 ## Tech Stack
 
