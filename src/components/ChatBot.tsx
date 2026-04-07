@@ -10,7 +10,7 @@ const CHAT_URL = `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/chat`;
 const ChatBot = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState<Message[]>([
-    { role: "assistant", content: "Hi! 👋 I'm Rezaan's portfolio assistant. Ask me anything about his skills, projects, or experience! Let's go through it together! 🥰" },
+    { role: "assistant", content: "Hi! 👋 I'm Rezaan's portfolio assistant. Ask me anything about her skills, projects, or experience! Let's go through it together! 🥰" },
   ]);
   const [input, setInput] = useState("");
   const [isLoading, setIsLoading] = useState(false);
