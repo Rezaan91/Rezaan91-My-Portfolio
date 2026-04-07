@@ -9,6 +9,7 @@ const CHAT_URL = `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/chat`;
 
 const ChatBot = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [showBubble, setShowBubble] = useState(false);
   const [messages, setMessages] = useState<Message[]>([
     { role: "assistant", content: "Hi! 👋 I'm Rezaan's portfolio assistant. Ask me anything about her skills, projects, or experience! Let's go through it together! 🥰" },
   ]);
@@ -16,6 +17,18 @@ const ChatBot = () => {
   const [isLoading, setIsLoading] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
+
+  // Show attention bubble after 3s, hide after 10s or on chat open
+  useEffect(() => {
+    const dismissed = sessionStorage.getItem("chatBubbleDismissed");
+    if (dismissed) return;
+    const showTimer = setTimeout(() => setShowBubble(true), 3000);
+    const hideTimer = setTimeout(() => {
+      setShowBubble(false);
+      sessionStorage.setItem("chatBubbleDismissed", "true");
+    }, 13000);
+    return () => { clearTimeout(showTimer); clearTimeout(hideTimer); };
+  }, []);
 
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
