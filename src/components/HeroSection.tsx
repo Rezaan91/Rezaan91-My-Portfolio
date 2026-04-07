@@ -5,9 +5,9 @@ import { ArrowDown, Github, Linkedin, Mail } from "lucide-react";
 import backgroundImage from "@/assets/background.png";
 
 const taglines = [
-  "Frontend Developer",
+  "Full-Stack Developer",
   "UI/UX Designer",
-  "Full Stack Developer",
+  "Builder behind Ubuntu Mzansi Tech",
 ];
 
 const HeroSection = () => {
