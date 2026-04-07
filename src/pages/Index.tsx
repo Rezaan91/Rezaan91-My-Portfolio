@@ -11,6 +11,7 @@ import CTASection from "@/components/CTASection";
 import Footer from "@/components/Footer";
 import SectionNavigation from "@/components/SectionNavigation";
 import WelcomeModal from "@/components/WelcomeModal";
+import ChatBot from "@/components/ChatBot";
 // Portfolio page
 
 const Index = () => {
@@ -45,6 +46,7 @@ const Index = () => {
         <Footer />
         <SectionNavigation />
         <WelcomeModal />
+        <ChatBot />
       </div>
     </>
   );
