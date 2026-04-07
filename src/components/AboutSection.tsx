@@ -11,10 +11,12 @@ const beliefs = [
 ];
 
 const buildingItems = [
-  { icon: Monitor, label: "Asset Monitoring Platforms" },
+  { icon: Monitor, label: "Asset Monitoring Platforms (e.g. TrackSuite)" },
+  { icon: Rocket, label: "Business Enablement Tools (UM-Tech-BizActivate)" },
+  { icon: Wrench, label: "Fintech & Utility Apps (Watt Wallet Buddy)" },
   { icon: Wrench, label: "Workflow & Developer Tools" },
-  { icon: Server, label: "API-Driven Systems" },
-  { icon: Brain, label: "Future AI Integration" },
+  { icon: Server, label: "API-Driven Systems & Microservices" },
+  { icon: Brain, label: "Scalable Platforms with Future AI Integration" },
 ];
 
 const highlights = [
