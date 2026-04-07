@@ -46,6 +46,7 @@ const Index = () => {
         <Footer />
         <SectionNavigation />
         <WelcomeModal />
+        <ChatBot />
       </div>
     </>
   );
