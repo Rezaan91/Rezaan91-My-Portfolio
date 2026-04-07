@@ -11,10 +11,12 @@ const beliefs = [
 ];
 
 const buildingItems = [
-  { icon: Monitor, label: "Asset Monitoring Platforms" },
+  { icon: Monitor, label: "Asset Monitoring Platforms (e.g. TrackSuite)" },
+  { icon: Rocket, label: "Business Enablement Tools (UM-Tech-BizActivate)" },
+  { icon: Wrench, label: "Fintech & Utility Apps (Watt Wallet Buddy)" },
   { icon: Wrench, label: "Workflow & Developer Tools" },
-  { icon: Server, label: "API-Driven Systems" },
-  { icon: Brain, label: "Future AI Integration" },
+  { icon: Server, label: "API-Driven Systems & Microservices" },
+  { icon: Brain, label: "Scalable Platforms with Future AI Integration" },
 ];
 
 const highlights = [
@@ -173,7 +175,7 @@ const AboutSection = () => {
                 and where I'm building the future I want to work in.
               </p>
             </div>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-2xl mx-auto">
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-4 max-w-3xl mx-auto">
               {buildingItems.map((item, index) => (
                 <motion.div
                   key={item.label}
