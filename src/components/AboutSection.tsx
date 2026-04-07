@@ -89,16 +89,16 @@ const AboutSection = () => {
 
               <div className="text-lg text-foreground leading-relaxed text-center space-y-4">
                 <p>
-                  I'm a frontend developer with a strong foundation in UI/UX design and full-stack development, focused on building digital experiences that are both functional and meaningful. I enjoy turning ideas into real-world applications that solve problems and deliver intuitive user experiences.
+                  I'm a full-stack developer who specializes in user-focused interfaces, with a strong foundation in UI/UX design. I'm passionate about building digital experiences that are both functional and meaningful, and I enjoy turning ideas into real-world applications that solve problems and deliver intuitive user experiences.
                 </p>
                 <p>
-                  My journey into tech started with graphic design, where I developed a deep understanding of visual communication and user interaction. That foundation led me into development, where I began building web applications using JavaScript and Python—bridging the gap between design and functionality.
+                  My journey into tech started in graphic design, where I developed a deep understanding of visual communication and user interaction. That foundation led me into development, where I began building web applications using JavaScript and Python—bridging the gap between design and functionality.
                 </p>
                 <p>
                   Today, I work at the intersection of design and development. I don't just build interfaces—I design experiences. I focus on usability, responsiveness, and clean architecture to create products that feel seamless, perform well, and look refined.
                 </p>
                 <p>
-                  I'm currently building <span className="text-primary font-semibold">UM Tech CG</span>, where I develop scalable platforms, developer tools, and data-driven systems aimed at solving real-world challenges. My goal is to create technology that improves workflows, simplifies processes, and evolves into intelligent, impactful solutions.
+                  I'm currently building <span className="text-primary font-semibold">UM Tech CG</span>, where I develop scalable platforms, developer tools, and data-driven systems aimed at solving real-world challenges—including projects like <span className="text-primary font-semibold">UM-Tech-BizActivate</span> and <span className="text-primary font-semibold">Watt Wallet Buddy</span>. My goal is to create technology that improves workflows, simplifies processes, and evolves into intelligent, impactful solutions.
                 </p>
               </div>
             </div>
