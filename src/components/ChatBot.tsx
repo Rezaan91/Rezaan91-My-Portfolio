@@ -126,9 +126,37 @@ const ChatBot = () => {
 
   return (
     <>
+      {/* Attention bubble */}
+      <AnimatePresence>
+        {showBubble && !isOpen && (
+          <motion.div
+            initial={{ opacity: 0, y: 10, scale: 0.9 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: 10, scale: 0.9 }}
+            transition={{ type: "spring", stiffness: 300, damping: 20 }}
+            className="fixed bottom-[88px] right-6 z-50 max-w-[240px] glass-card rounded-2xl rounded-br-sm p-3 shadow-lg border border-primary/30 cursor-pointer"
+            onClick={() => {
+              setShowBubble(false);
+              sessionStorage.setItem("chatBubbleDismissed", "true");
+              setIsOpen(true);
+            }}
+          >
+            <p className="text-sm text-foreground font-medium">
+              💬 Got questions? Chat with my AI assistant — ask about my skills, projects, or experience!
+            </p>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
       {/* Floating button */}
       <motion.button
-        onClick={() => setIsOpen(!isOpen)}
+        onClick={() => {
+          setIsOpen(!isOpen);
+          if (!isOpen) {
+            setShowBubble(false);
+            sessionStorage.setItem("chatBubbleDismissed", "true");
+          }
+        }}
         className="fixed bottom-6 right-6 z-50 w-14 h-14 rounded-full bg-primary text-primary-foreground shadow-lg hover:shadow-[0_0_30px_hsla(174,60%,45%,0.5)] flex items-center justify-center transition-all duration-300"
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.95 }}
