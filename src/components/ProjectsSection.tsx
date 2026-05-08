@@ -15,6 +15,17 @@ import lula from "@/assets/lula.png";
 
 const projects = [
   {
+    title: "TrackSuite – IT Asset Monitoring Platform",
+    description: "A browser-based IT asset management platform built to help organizations track, manage, and monitor assets through a modern web interface. Showcases full-stack integration, structured UI workflows, API-driven development, and database-connected functionality.",
+    icon: MonitorCheck,
+    tags: ["Full Stack", "React", "API", "Database", "Asset Management"],
+    color: "from-yellow-500 to-amber-700",
+    repoUrl: "https://github.com/Rezaan91/UM-Tech-TrackSuite",
+    demoUrl: "https://tracksuite-asset-manager.vercel.app/",
+    image: tracksuite,
+    featured: true,
+  },
+  {
     title: "Canva Creative Showcase",
     description: "A showcase of creative design projects built with Canva, featuring graphics, presentations, and visual content.",
     icon: Palette,
