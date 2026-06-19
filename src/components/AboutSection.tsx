@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { Code, Briefcase, GraduationCap, Heart, Rocket, Monitor, Wrench, Server, Brain } from "lucide-react";
 import aboutBg from "@/assets/about-bg.png";
-import professionalPhoto from "@/assets/professional-photo.jpg";
+import professionalPhotoAsset from "@/assets/professional-photo.jpg.asset.json";
 
 const beliefs = [
   "Good design is not decoration — it's how things work",
@@ -79,7 +79,7 @@ const AboutSection = () => {
               <div className="relative">
                 <div className="relative w-48 h-48 md:w-56 md:h-56 rounded-full overflow-hidden border-4 border-primary/30 shadow-[0_0_60px_hsla(174,60%,45%,0.3)]">
                   <img
-                    src={professionalPhoto}
+                    src={professionalPhotoAsset.url}
                     alt="Rezaan Achmat"
                     className="w-full h-full object-cover object-top"
                   />
