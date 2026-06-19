@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { Code, Briefcase, GraduationCap, Heart, Rocket, Monitor, Wrench, Server, Brain } from "lucide-react";
 import aboutBg from "@/assets/about-bg.png";
-import professionalPhoto from "@/assets/professional-photo.jpg";
+import professionalPhotoAsset from "@/assets/professional-photo.jpg.asset.json";
 
 const beliefs = [
   "Good design is not decoration — it's how things work",
