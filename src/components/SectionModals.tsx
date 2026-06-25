@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Dialog, DialogContent, DialogTitle, DialogDescription } from "@/components/ui/dialog";
-import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
+
 import AboutSection from "@/components/AboutSection";
 import SkillsSection from "@/components/SkillsSection";
 import ProjectsSection from "@/components/ProjectsSection";
@@ -47,10 +47,8 @@ const SectionModals = () => {
   return (
     <Dialog open={!!active} onOpenChange={handleOpenChange}>
       <DialogContent className="max-w-6xl w-[95vw] max-h-[90vh] overflow-y-auto p-0 gap-0">
-        <VisuallyHidden>
-          <DialogTitle>{Current?.label ?? "Section"}</DialogTitle>
-          <DialogDescription>{Current?.label ?? ""} section content</DialogDescription>
-        </VisuallyHidden>
+        <DialogTitle className="sr-only">{Current?.label ?? "Section"}</DialogTitle>
+        <DialogDescription className="sr-only">{Current?.label ?? ""} section content</DialogDescription>
         {Current && <Current.Component />}
       </DialogContent>
     </Dialog>
