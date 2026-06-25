@@ -33,10 +33,9 @@ const SectionsAccordion = () => {
       const hash = window.location.hash.replace("#", "");
       if (items.some((i) => i.key === hash)) {
         setValue(hash);
-        // Scroll the opened panel into view after expansion animation
         requestAnimationFrame(() => {
           setTimeout(() => {
-            const el = document.getElementById(hash);
+            const el = document.getElementById(`panel-${hash}`);
             el?.scrollIntoView({ behavior: "smooth", block: "start" });
           }, 250);
         });
@@ -52,7 +51,7 @@ const SectionsAccordion = () => {
     if (next) {
       requestAnimationFrame(() => {
         setTimeout(() => {
-          const el = document.getElementById(next);
+          const el = document.getElementById(`panel-${next}`);
           el?.scrollIntoView({ behavior: "smooth", block: "start" });
         }, 250);
       });
