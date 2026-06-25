@@ -1,12 +1,11 @@
 import { Helmet } from "react-helmet";
 import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
-import SectionsAccordion from "@/components/SectionsAccordion";
 import CTASection from "@/components/CTASection";
 import Footer from "@/components/Footer";
-import SectionNavigation from "@/components/SectionNavigation";
 import WelcomeModal from "@/components/WelcomeModal";
 import ChatBot from "@/components/ChatBot";
+import SectionModals from "@/components/SectionModals";
 // Portfolio page
 
 const Index = () => {
@@ -30,11 +29,10 @@ const Index = () => {
         <Navbar />
         <main>
           <HeroSection />
-          <SectionsAccordion />
           <CTASection />
         </main>
         <Footer />
-        <SectionNavigation />
+        <SectionModals />
         <WelcomeModal />
         <ChatBot />
       </div>
