@@ -1,5 +1,5 @@
-import { useEffect, useState } from "react";
-import { Dialog, DialogContent, DialogTitle, DialogDescription } from "@/components/ui/dialog";
+import { useEffect, useRef, useState } from "react";
+import { X } from "lucide-react";
 
 import AboutSection from "@/components/AboutSection";
 import SkillsSection from "@/components/SkillsSection";
@@ -21,6 +21,7 @@ const registry: Record<Key, { label: string; Component: () => JSX.Element }> = {
 
 const SectionModals = () => {
   const [active, setActive] = useState<Key | null>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const sync = () => {
@@ -33,25 +34,37 @@ const SectionModals = () => {
     return () => window.removeEventListener("hashchange", sync);
   }, []);
 
-  const handleOpenChange = (open: boolean) => {
-    if (!open) {
-      setActive(null);
-      if (window.location.hash) {
-        history.replaceState(null, "", window.location.pathname + window.location.search);
-      }
+  useEffect(() => {
+    if (active && containerRef.current) {
+      containerRef.current.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  }, [active]);
+
+  const close = () => {
+    setActive(null);
+    if (window.location.hash) {
+      history.replaceState(null, "", window.location.pathname + window.location.search);
     }
   };
 
-  const Current = active ? registry[active] : null;
+  if (!active) return null;
+  const Current = registry[active];
 
   return (
-    <Dialog open={!!active} onOpenChange={handleOpenChange}>
-      <DialogContent className="max-w-6xl w-[95vw] max-h-[90vh] overflow-y-auto p-0 gap-0">
-        <DialogTitle className="sr-only">{Current?.label ?? "Section"}</DialogTitle>
-        <DialogDescription className="sr-only">{Current?.label ?? ""} section content</DialogDescription>
-        {Current && <Current.Component />}
-      </DialogContent>
-    </Dialog>
+    <section ref={containerRef} className="relative w-full bg-background">
+      <div className="flex items-center justify-between max-w-7xl mx-auto px-6 pt-8">
+        <h2 className="text-2xl font-semibold text-foreground">{Current.label}</h2>
+        <button
+          onClick={close}
+          aria-label="Close section"
+          className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors"
+        >
+          <X className="h-5 w-5" />
+          Close
+        </button>
+      </div>
+      <Current.Component />
+    </section>
   );
 };
 
