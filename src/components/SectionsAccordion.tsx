@@ -72,7 +72,7 @@ const SectionsAccordion = () => {
             <AccordionItem
               key={key}
               value={key}
-              id={key}
+              id={`panel-${key}`}
               className="scroll-mt-24 border border-border/60 rounded-2xl bg-card/70 backdrop-blur-md shadow-sm overflow-hidden transition-all hover:shadow-md hover:border-primary/40"
             >
               <AccordionTrigger className="px-6 py-5 md:px-8 md:py-6 text-left hover:no-underline group">
