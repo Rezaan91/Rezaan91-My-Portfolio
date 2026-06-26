@@ -1,23 +1,25 @@
 import { useState, useEffect } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import ThemeToggle from "./ThemeToggle";
 
 const navLinks = [
-  { name: "Home", href: "#home", color: "text-primary" },
-  { name: "About", href: "#about", color: "text-accent" },
-  { name: "Skills", href: "#skills", color: "text-secondary-foreground" },
-  { name: "Projects", href: "#projects", color: "text-primary" },
-  { name: "Experience", href: "#experience", color: "text-accent" },
-  { name: "Education", href: "#education", color: "text-secondary-foreground" },
-  { name: "Contact", href: "#contact", color: "text-primary" },
+  { name: "Home", to: "/", color: "text-primary" },
+  { name: "About", to: "/about", color: "text-accent" },
+  { name: "Skills", to: "/skills", color: "text-secondary-foreground" },
+  { name: "Projects", to: "/projects", color: "text-primary" },
+  { name: "Experience", to: "/experience", color: "text-accent" },
+  { name: "Education", to: "/education", color: "text-secondary-foreground" },
+  { name: "Contact", to: "/contact", color: "text-primary" },
 ];
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const [activeSection, setActiveSection] = useState("home");
+  const location = useLocation();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -27,53 +29,17 @@ const Navbar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // IntersectionObserver to track active section
-  useEffect(() => {
-    const sectionIds = navLinks.map(link => link.href.replace('#', ''));
-    
-    const observerOptions = {
-      root: null,
-      rootMargin: '-10% 0px -60% 0px',
-      threshold: 0.1,
-    };
+  const isActiveLink = (to: string) =>
+    to === "/" ? location.pathname === "/" : location.pathname.startsWith(to);
 
-    const observerCallback = (entries: IntersectionObserverEntry[]) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          setActiveSection(entry.target.id);
-        }
-      });
-    };
-
-    const observer = new IntersectionObserver(observerCallback, observerOptions);
-
-    sectionIds.forEach((id) => {
-      const element = document.getElementById(id);
-      if (element) {
-        observer.observe(element);
-      }
-    });
-
-    return () => observer.disconnect();
-  }, []);
-
-  const handleSmoothScroll = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+  const handleClick = (e: React.MouseEvent<HTMLAnchorElement>, to: string) => {
     e.preventDefault();
-    const targetId = href.replace('#', '');
-    if (targetId === 'home') {
-      if (window.location.hash) {
-        history.replaceState(null, "", window.location.pathname + window.location.search);
-      }
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    } else {
-      // Trigger a modal via hash change; set then dispatch to ensure listeners run even if hash matches
-      if (window.location.hash === href) {
-        window.dispatchEvent(new HashChangeEvent('hashchange'));
-      } else {
-        window.location.hash = href;
-      }
-    }
     setIsOpen(false);
+    if (location.pathname === to) {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    } else {
+      navigate(to);
+    }
   };
 
   return (
@@ -86,23 +52,23 @@ const Navbar = () => {
       }`}
     >
       <div className="container mx-auto px-4 flex items-center justify-between">
-        <a 
-          href="#home" 
-          onClick={(e) => handleSmoothScroll(e, '#home')}
+        <Link
+          to="/"
+          onClick={(e) => handleClick(e as unknown as React.MouseEvent<HTMLAnchorElement>, "/")}
           className="text-2xl font-display font-bold gradient-text"
         >
           RA
-        </a>
+        </Link>
 
         {/* Desktop Navigation */}
         <div className="hidden md:flex items-center gap-1 relative">
           {navLinks.map((link) => {
-            const isActive = activeSection === link.href.replace('#', '');
+            const isActive = isActiveLink(link.to);
             return (
-              <a
+              <Link
                 key={link.name}
-                href={link.href}
-                onClick={(e) => handleSmoothScroll(e, link.href)}
+                to={link.to}
+                onClick={(e) => handleClick(e, link.to)}
                 className={`px-4 py-2 text-sm font-medium ${link.color} hover:opacity-80 transition-all duration-300 relative group`}
               >
                 {isActive && (
@@ -116,7 +82,7 @@ const Navbar = () => {
                 <span className={`absolute bottom-0 left-1/2 -translate-x-1/2 h-0.5 bg-current transition-all duration-300 ${
                   isActive ? 'w-3/4' : 'w-0 group-hover:w-3/4'
                 }`} />
-              </a>
+              </Link>
             );
           })}
         </div>
@@ -149,12 +115,12 @@ const Navbar = () => {
           >
             <div className="flex flex-col p-4 gap-2">
               {navLinks.map((link) => {
-                const isActive = activeSection === link.href.replace('#', '');
+                const isActive = isActiveLink(link.to);
                 return (
-                  <a
+                  <Link
                     key={link.name}
-                    href={link.href}
-                    onClick={(e) => handleSmoothScroll(e, link.href)}
+                    to={link.to}
+                    onClick={(e) => handleClick(e, link.to)}
                     className={`px-4 py-3 font-medium ${link.color} hover:opacity-80 rounded-lg transition-all relative ${
                       isActive ? 'bg-gradient-to-r from-primary/20 to-accent/20 border border-primary/30' : 'hover:bg-muted/50'
                     }`}
@@ -167,7 +133,7 @@ const Navbar = () => {
                         transition={{ type: "spring", stiffness: 380, damping: 30 }}
                       />
                     )}
-                  </a>
+                  </Link>
                 );
               })}
             </div>
