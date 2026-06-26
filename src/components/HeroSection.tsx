@@ -111,10 +111,10 @@ const HeroSection = () => {
             {/* CTA Button */}
             <div className="flex justify-center mb-8">
               <Button variant="hero" asChild>
-                <a href="#projects">
+                <Link to="/projects">
                   View My Work
                   <ArrowDown size={18} className="ml-2" />
-                </a>
+                </Link>
               </Button>
             </div>
 
@@ -159,10 +159,10 @@ const HeroSection = () => {
           transition={{ delay: 1.2 }}
           className="absolute bottom-8 left-1/2 -translate-x-1/2"
         >
-          <a href="#about" className="flex flex-col items-center gap-2 text-muted-foreground hover:text-primary transition-colors">
+          <Link to="/about" className="flex flex-col items-center gap-2 text-muted-foreground hover:text-primary transition-colors">
             <span className="text-sm">Scroll Down</span>
             <ArrowDown size={20} className="animate-bounce" />
-          </a>
+          </Link>
         </motion.div>
       </motion.div>
     </section>
