@@ -18,12 +18,12 @@ const Layout = () => {
   const showBg = BG_ROUTES.includes(pathname);
 
   return (
-    <div className="relative min-h-screen bg-background">
+    <div className={`min-h-screen ${showBg ? "" : "bg-background"}`}>
       {showBg && (
         <div
           aria-hidden
-          className="fixed inset-0 -z-10 pointer-events-none bg-cover bg-center bg-no-repeat"
-          style={{ backgroundImage: `url(${siteBg.url})` }}
+          className="fixed inset-0 pointer-events-none bg-cover bg-center bg-no-repeat"
+          style={{ backgroundImage: `url(${siteBg.url})`, zIndex: -1 }}
         />
       )}
       <Navbar />
