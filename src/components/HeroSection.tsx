@@ -58,15 +58,6 @@ const HeroSection = () => {
       id="home"
       className="relative min-h-screen flex items-center justify-center overflow-hidden"
     >
-      {/* Parallax Background Image with Overlay */}
-      <motion.div className="absolute inset-0 z-0" style={{ y }}>
-        <img
-          src={backgroundImage}
-          alt="Background"
-          className="w-full h-[120%] object-cover opacity-30"
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-background/60 via-background/70 to-background/90" />
-      </motion.div>
 
       {/* Decorative Elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
