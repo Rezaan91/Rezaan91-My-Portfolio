@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { Code, Briefcase, GraduationCap, Heart, Rocket, Monitor, Wrench, Server, Brain } from "lucide-react";
-import aboutBg from "@/assets/about-bg.png";
+
 import professionalPhotoAsset from "@/assets/professional-photo.jpg.asset.json";
 
 const beliefs = [
