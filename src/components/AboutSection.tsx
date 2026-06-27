@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { Code, Briefcase, GraduationCap, Heart, Rocket, Monitor, Wrench, Server, Brain } from "lucide-react";
-import aboutBg from "@/assets/about-bg.png";
+
 import professionalPhotoAsset from "@/assets/professional-photo.jpg.asset.json";
 
 const beliefs = [
@@ -45,13 +45,8 @@ const highlights = [
 const AboutSection = () => {
   return (
     <section id="about" className="py-20 md:py-32 relative overflow-hidden">
-      {/* Background Image */}
-      <div
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-25 pointer-events-none scale-110"
-        style={{ backgroundImage: `url(${aboutBg})` }}
-      />
-      <div className="absolute inset-0 bg-background/60 pointer-events-none" />
       <div className="container mx-auto px-4 relative z-10">
+
         {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
