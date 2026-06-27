@@ -124,67 +124,89 @@ const ChatBot = () => {
     }
   };
 
+  const dragConstraintsRef = useRef<HTMLDivElement>(null);
+  const [wasDragged, setWasDragged] = useState(false);
+
   return (
     <>
-      {/* Attention bubble */}
-      <AnimatePresence>
-        {showBubble && !isOpen && (
-          <motion.div
-            initial={{ opacity: 0, y: 10, scale: 0.9 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: 10, scale: 0.9 }}
-            transition={{ type: "spring", stiffness: 300, damping: 20 }}
-            className="fixed bottom-[88px] right-6 z-50 max-w-[240px] glass-card rounded-2xl rounded-br-sm p-3 shadow-lg border border-primary/30 cursor-pointer"
-            onClick={() => {
-              setShowBubble(false);
-              sessionStorage.setItem("chatBubbleDismissed", "true");
-              setIsOpen(true);
-            }}
-          >
-            <p className="text-sm text-foreground font-medium">
-              💬 Got questions? Chat with my AI assistant — ask about my skills, projects, or experience!
-            </p>
-          </motion.div>
-        )}
-      </AnimatePresence>
+      {/* Drag bounds = viewport */}
+      <div
+        ref={dragConstraintsRef}
+        aria-hidden
+        className="fixed inset-0 pointer-events-none z-40"
+      />
 
-      {/* Floating button */}
-      <motion.button
-        onClick={() => {
-          setIsOpen(!isOpen);
-          if (!isOpen) {
-            setShowBubble(false);
-            sessionStorage.setItem("chatBubbleDismissed", "true");
-          }
-        }}
-        className="fixed bottom-6 right-6 z-50 w-14 h-14 rounded-full bg-primary text-primary-foreground shadow-lg hover:shadow-[0_0_30px_hsla(174,60%,45%,0.5)] flex items-center justify-center transition-all duration-300"
-        whileHover={{ scale: 1.1 }}
-        whileTap={{ scale: 0.95 }}
-        aria-label="Toggle chat"
+      {/* Draggable floating widget container */}
+      <motion.div
+        drag
+        dragConstraints={dragConstraintsRef}
+        dragMomentum={false}
+        dragElastic={0}
+        onDragStart={() => setWasDragged(true)}
+        onDragEnd={() => setTimeout(() => setWasDragged(false), 50)}
+        className="fixed bottom-6 right-6 z-50 touch-none"
       >
-        <AnimatePresence mode="wait">
-          {isOpen ? (
-            <motion.div key="close" initial={{ rotate: -90, opacity: 0 }} animate={{ rotate: 0, opacity: 1 }} exit={{ rotate: 90, opacity: 0 }} transition={{ duration: 0.2 }}>
-              <X className="w-6 h-6" />
-            </motion.div>
-          ) : (
-            <motion.div key="chat" initial={{ rotate: 90, opacity: 0 }} animate={{ rotate: 0, opacity: 1 }} exit={{ rotate: -90, opacity: 0 }} transition={{ duration: 0.2 }}>
-              <MessageCircle className="w-6 h-6" />
+        {/* Attention bubble */}
+        <AnimatePresence>
+          {showBubble && !isOpen && (
+            <motion.div
+              initial={{ opacity: 0, y: 10, scale: 0.9 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              exit={{ opacity: 0, y: 10, scale: 0.9 }}
+              transition={{ type: "spring", stiffness: 300, damping: 20 }}
+              className="absolute bottom-[68px] right-0 w-[240px] glass-card rounded-2xl rounded-br-sm p-3 shadow-lg border border-primary/30 cursor-pointer"
+              onClick={() => {
+                if (wasDragged) return;
+                setShowBubble(false);
+                sessionStorage.setItem("chatBubbleDismissed", "true");
+                setIsOpen(true);
+              }}
+            >
+              <p className="text-sm text-foreground font-medium">
+                💬 Got questions? Chat with my AI assistant — ask about my skills, projects, or experience!
+              </p>
             </motion.div>
           )}
         </AnimatePresence>
-      </motion.button>
 
-      {/* Chat window */}
-      <AnimatePresence>
-        {isOpen && (
-          <motion.div
-            initial={{ opacity: 0, y: 20, scale: 0.95 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: 20, scale: 0.95 }}
-            transition={{ duration: 0.3 }}
-            className="fixed bottom-24 right-6 z-50 w-[360px] max-w-[calc(100vw-3rem)] h-[500px] max-h-[calc(100vh-8rem)] rounded-2xl border border-border bg-background shadow-2xl flex flex-col overflow-hidden"
-          >
+        {/* Floating button */}
+        <motion.button
+          onClick={() => {
+            if (wasDragged) return;
+            setIsOpen(!isOpen);
+            if (!isOpen) {
+              setShowBubble(false);
+              sessionStorage.setItem("chatBubbleDismissed", "true");
+            }
+          }}
+          className="w-14 h-14 rounded-full bg-primary text-primary-foreground shadow-lg hover:shadow-[0_0_30px_hsla(174,60%,45%,0.5)] flex items-center justify-center transition-shadow duration-300 cursor-grab active:cursor-grabbing"
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.95 }}
+          aria-label="Toggle chat (drag to move)"
+        >
+          <AnimatePresence mode="wait">
+            {isOpen ? (
+              <motion.div key="close" initial={{ rotate: -90, opacity: 0 }} animate={{ rotate: 0, opacity: 1 }} exit={{ rotate: 90, opacity: 0 }} transition={{ duration: 0.2 }}>
+                <X className="w-6 h-6" />
+              </motion.div>
+            ) : (
+              <motion.div key="chat" initial={{ rotate: 90, opacity: 0 }} animate={{ rotate: 0, opacity: 1 }} exit={{ rotate: -90, opacity: 0 }} transition={{ duration: 0.2 }}>
+                <MessageCircle className="w-6 h-6" />
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </motion.button>
+
+        {/* Chat window — anchored to widget, drags with it */}
+        <AnimatePresence>
+          {isOpen && (
+            <motion.div
+              initial={{ opacity: 0, y: 20, scale: 0.95 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              exit={{ opacity: 0, y: 20, scale: 0.95 }}
+              transition={{ duration: 0.3 }}
+              className="absolute bottom-[72px] right-0 w-[360px] max-w-[calc(100vw-3rem)] h-[500px] max-h-[calc(100vh-8rem)] rounded-2xl border border-border bg-background shadow-2xl flex flex-col overflow-hidden"
+            >
             {/* Header */}
             <div className="px-4 py-3 border-b border-border bg-primary/5 flex items-center gap-3">
               <div className="w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center">
@@ -268,7 +290,9 @@ const ChatBot = () => {
           </motion.div>
         )}
       </AnimatePresence>
+      </motion.div>
     </>
+
   );
 };
 
