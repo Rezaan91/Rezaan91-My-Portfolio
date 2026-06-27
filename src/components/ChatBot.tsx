@@ -290,7 +290,9 @@ const ChatBot = () => {
           </motion.div>
         )}
       </AnimatePresence>
+      </motion.div>
     </>
+
   );
 };
 
