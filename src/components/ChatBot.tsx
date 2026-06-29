@@ -18,16 +18,22 @@ const ChatBot = () => {
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
 
-  // Show attention bubble after 3s, hide after 10s or on chat open
+  // Show attention bubble when triggered by the theme tooltip sequence
   useEffect(() => {
-    const dismissed = sessionStorage.getItem("chatBubbleDismissed");
-    if (dismissed) return;
-    const showTimer = setTimeout(() => setShowBubble(true), 3000);
-    const hideTimer = setTimeout(() => {
-      setShowBubble(false);
-      sessionStorage.setItem("chatBubbleDismissed", "true");
-    }, 13000);
-    return () => { clearTimeout(showTimer); clearTimeout(hideTimer); };
+    const handler = () => {
+      if (sessionStorage.getItem("chatBubbleDismissed")) return;
+      setShowBubble(true);
+      const hideTimer = setTimeout(() => {
+        setShowBubble(false);
+        sessionStorage.setItem("chatBubbleDismissed", "true");
+      }, 10000);
+      (handler as any)._t = hideTimer;
+    };
+    window.addEventListener("showChatTip", handler);
+    return () => {
+      window.removeEventListener("showChatTip", handler);
+      if ((handler as any)._t) clearTimeout((handler as any)._t);
+    };
   }, []);
 
   useEffect(() => {
