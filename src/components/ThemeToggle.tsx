@@ -14,17 +14,9 @@ const ThemeToggle = () => {
   const { theme, toggleTheme } = useTheme();
   const [showTooltip, setShowTooltip] = useState(false);
 
-  useEffect(() => {
-    const handler = () => {
-      setShowTooltip(true);
-      setTimeout(() => {
-        setShowTooltip(false);
-        window.dispatchEvent(new CustomEvent("showChatTip"));
-      }, 6000);
-    };
-    window.addEventListener("showThemeTooltip", handler);
-    return () => window.removeEventListener("showThemeTooltip", handler);
-  }, []);
+  // Tooltip is no longer auto-triggered — the Theme Toggle popup in the
+  // welcome sequence handles introducing this feature.
+
 
   const handleClick = () => {
     toggleTheme();
