@@ -17,7 +17,10 @@ const ThemeToggle = () => {
   useEffect(() => {
     const handler = () => {
       setShowTooltip(true);
-      setTimeout(() => setShowTooltip(false), 6000);
+      setTimeout(() => {
+        setShowTooltip(false);
+        window.dispatchEvent(new CustomEvent("showChatTip"));
+      }, 6000);
     };
     window.addEventListener("showThemeTooltip", handler);
     return () => window.removeEventListener("showThemeTooltip", handler);
