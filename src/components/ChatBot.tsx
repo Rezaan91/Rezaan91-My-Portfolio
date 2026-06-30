@@ -176,7 +176,7 @@ const ChatBot = () => {
               }}
             >
               <p className="text-sm text-foreground font-medium">
-                💬 Got questions? Chat with my AI assistant — ask about my skills, projects, or experience!
+                💬 Got questions? Chat with Zarney — ask me about my skills, projects, or experience!
               </p>
             </motion.div>
           )}
