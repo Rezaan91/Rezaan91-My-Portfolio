@@ -244,8 +244,8 @@ const ChatBot = () => {
               {messages.map((msg, i) => (
                 <div key={i} className={`flex gap-2 ${msg.role === "user" ? "justify-end" : "justify-start"}`}>
                   {msg.role === "assistant" && (
-                    <div className="w-6 h-6 rounded-full bg-primary/20 flex items-center justify-center flex-shrink-0 mt-1">
-                      <Bot className="w-3 h-3 text-primary" />
+                    <div className="w-6 h-6 rounded-full overflow-hidden border border-primary/30 bg-background flex-shrink-0 mt-1">
+                      <img src={zarneyIcon} alt="Zarney" className="w-full h-full object-cover" />
                     </div>
                   )}
                   <div
