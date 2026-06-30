@@ -1,17 +1,24 @@
 import { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { MessageCircle, X, Send, Bot, User } from "lucide-react";
+import { X, Send, User } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useTheme } from "@/hooks/use-theme";
+import zarneyLightAsset from "@/assets/zarney-light.png.asset.json";
+import zarneyDarkAsset from "@/assets/zarney-dark.png.asset.json";
 
 type Message = { role: "user" | "assistant"; content: string };
 
 const CHAT_URL = `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/chat`;
 
+const ZARNEY_WELCOME = "Hi! I'm Zarney 👋\n\nI'm Rezaan Achmat Fredericks' personal AI Portfolio Assistant.\n\nI'm here to answer questions about my skills, projects, experience, education, services, achievements, and professional journey.\n\nFeel free to ask me anything while exploring my portfolio.";
+
 const ChatBot = () => {
+  const { theme } = useTheme();
+  const zarneyIcon = theme === "dark" ? zarneyDarkAsset.url : zarneyLightAsset.url;
   const [isOpen, setIsOpen] = useState(false);
   const [showBubble, setShowBubble] = useState(false);
   const [messages, setMessages] = useState<Message[]>([
-    { role: "assistant", content: "Hi! 👋 I'm Rezaan's portfolio assistant. Ask me anything about her skills, projects, or experience! Let's go through it together! 🥰" },
+    { role: "assistant", content: ZARNEY_WELCOME },
   ]);
   const [input, setInput] = useState("");
   const [isLoading, setIsLoading] = useState(false);
@@ -169,7 +176,7 @@ const ChatBot = () => {
               }}
             >
               <p className="text-sm text-foreground font-medium">
-                💬 Got questions? Chat with my AI assistant — ask about my skills, projects, or experience!
+                💬 Got questions? Chat with Zarney — ask me about my skills, projects, or experience!
               </p>
             </motion.div>
           )}
@@ -185,20 +192,28 @@ const ChatBot = () => {
               sessionStorage.setItem("chatBubbleDismissed", "true");
             }
           }}
-          className="w-14 h-14 rounded-full bg-primary text-primary-foreground shadow-lg hover:shadow-[0_0_30px_hsla(174,60%,45%,0.5)] flex items-center justify-center transition-shadow duration-300 cursor-grab active:cursor-grabbing"
+          className="w-14 h-14 rounded-full bg-background border border-primary/40 shadow-lg hover:shadow-[0_0_30px_hsla(174,60%,45%,0.5)] flex items-center justify-center transition-shadow duration-300 cursor-grab active:cursor-grabbing overflow-hidden"
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.95 }}
-          aria-label="Toggle chat (drag to move)"
+          aria-label="Toggle Zarney chat (drag to move)"
         >
           <AnimatePresence mode="wait">
             {isOpen ? (
               <motion.div key="close" initial={{ rotate: -90, opacity: 0 }} animate={{ rotate: 0, opacity: 1 }} exit={{ rotate: 90, opacity: 0 }} transition={{ duration: 0.2 }}>
-                <X className="w-6 h-6" />
+                <X className="w-6 h-6 text-foreground" />
               </motion.div>
             ) : (
-              <motion.div key="chat" initial={{ rotate: 90, opacity: 0 }} animate={{ rotate: 0, opacity: 1 }} exit={{ rotate: -90, opacity: 0 }} transition={{ duration: 0.2 }}>
-                <MessageCircle className="w-6 h-6" />
-              </motion.div>
+              <motion.img
+                key={`zarney-${theme}`}
+                src={zarneyIcon}
+                alt="Zarney"
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.8 }}
+                transition={{ duration: 0.25 }}
+                className="w-full h-full object-cover"
+                draggable={false}
+              />
             )}
           </AnimatePresence>
         </motion.button>
@@ -215,12 +230,12 @@ const ChatBot = () => {
             >
             {/* Header */}
             <div className="px-4 py-3 border-b border-border bg-primary/5 flex items-center gap-3">
-              <div className="w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center">
-                <Bot className="w-4 h-4 text-primary" />
+              <div className="w-9 h-9 rounded-full overflow-hidden border border-primary/30 flex items-center justify-center bg-background">
+                <img src={zarneyIcon} alt="Zarney" className="w-full h-full object-cover" />
               </div>
               <div>
-                <p className="text-sm font-semibold text-foreground">Portfolio Assistant</p>
-                <p className="text-xs text-muted-foreground">Ask me about Rezaan</p>
+                <p className="text-sm font-semibold text-foreground">Zarney</p>
+                <p className="text-xs text-muted-foreground">Personal AI Portfolio Assistant</p>
               </div>
             </div>
 
@@ -229,12 +244,12 @@ const ChatBot = () => {
               {messages.map((msg, i) => (
                 <div key={i} className={`flex gap-2 ${msg.role === "user" ? "justify-end" : "justify-start"}`}>
                   {msg.role === "assistant" && (
-                    <div className="w-6 h-6 rounded-full bg-primary/20 flex items-center justify-center flex-shrink-0 mt-1">
-                      <Bot className="w-3 h-3 text-primary" />
+                    <div className="w-6 h-6 rounded-full overflow-hidden border border-primary/30 bg-background flex-shrink-0 mt-1">
+                      <img src={zarneyIcon} alt="Zarney" className="w-full h-full object-cover" />
                     </div>
                   )}
                   <div
-                    className={`max-w-[80%] px-3 py-2 rounded-2xl text-sm leading-relaxed ${
+                    className={`max-w-[80%] px-3 py-2 rounded-2xl text-sm leading-relaxed whitespace-pre-line ${
                       msg.role === "user"
                         ? "bg-primary text-primary-foreground rounded-br-md"
                         : "bg-muted text-foreground rounded-bl-md"
@@ -251,8 +266,8 @@ const ChatBot = () => {
               ))}
               {isLoading && messages[messages.length - 1]?.role === "user" && (
                 <div className="flex gap-2 justify-start">
-                  <div className="w-6 h-6 rounded-full bg-primary/20 flex items-center justify-center flex-shrink-0 mt-1">
-                    <Bot className="w-3 h-3 text-primary" />
+                  <div className="w-6 h-6 rounded-full overflow-hidden border border-primary/30 bg-background flex-shrink-0 mt-1">
+                    <img src={zarneyIcon} alt="Zarney" className="w-full h-full object-cover" />
                   </div>
                   <div className="bg-muted px-3 py-2 rounded-2xl rounded-bl-md">
                     <div className="flex gap-1">
