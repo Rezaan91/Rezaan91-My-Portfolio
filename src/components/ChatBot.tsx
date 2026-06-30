@@ -192,20 +192,28 @@ const ChatBot = () => {
               sessionStorage.setItem("chatBubbleDismissed", "true");
             }
           }}
-          className="w-14 h-14 rounded-full bg-primary text-primary-foreground shadow-lg hover:shadow-[0_0_30px_hsla(174,60%,45%,0.5)] flex items-center justify-center transition-shadow duration-300 cursor-grab active:cursor-grabbing"
+          className="w-14 h-14 rounded-full bg-background border border-primary/40 shadow-lg hover:shadow-[0_0_30px_hsla(174,60%,45%,0.5)] flex items-center justify-center transition-shadow duration-300 cursor-grab active:cursor-grabbing overflow-hidden"
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.95 }}
-          aria-label="Toggle chat (drag to move)"
+          aria-label="Toggle Zarney chat (drag to move)"
         >
           <AnimatePresence mode="wait">
             {isOpen ? (
               <motion.div key="close" initial={{ rotate: -90, opacity: 0 }} animate={{ rotate: 0, opacity: 1 }} exit={{ rotate: 90, opacity: 0 }} transition={{ duration: 0.2 }}>
-                <X className="w-6 h-6" />
+                <X className="w-6 h-6 text-foreground" />
               </motion.div>
             ) : (
-              <motion.div key="chat" initial={{ rotate: 90, opacity: 0 }} animate={{ rotate: 0, opacity: 1 }} exit={{ rotate: -90, opacity: 0 }} transition={{ duration: 0.2 }}>
-                <MessageCircle className="w-6 h-6" />
-              </motion.div>
+              <motion.img
+                key={`zarney-${theme}`}
+                src={zarneyIcon}
+                alt="Zarney"
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.8 }}
+                transition={{ duration: 0.25 }}
+                className="w-full h-full object-cover"
+                draggable={false}
+              />
             )}
           </AnimatePresence>
         </motion.button>
