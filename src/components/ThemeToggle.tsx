@@ -2,7 +2,7 @@ import { Moon, Sun } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useTheme } from "@/hooks/use-theme";
 import { motion, AnimatePresence } from "framer-motion";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import {
   Tooltip,
   TooltipContent,
@@ -14,8 +14,25 @@ const ThemeToggle = () => {
   const { theme, toggleTheme } = useTheme();
   const [showTooltip, setShowTooltip] = useState(false);
 
-  // Tooltip is no longer auto-triggered — the Theme Toggle popup in the
-  // welcome sequence handles introducing this feature.
+  // Triggered by the WelcomeModal sequence — show the existing tooltip,
+  // auto-dismiss after a few seconds, then trigger the chat bubble.
+  useEffect(() => {
+    const handler = () => {
+      setShowTooltip(true);
+      const t = setTimeout(() => {
+        setShowTooltip(false);
+        setTimeout(() => {
+          window.dispatchEvent(new Event("showChatTip"));
+        }, 400);
+      }, 5000);
+      (handler as any)._t = t;
+    };
+    window.addEventListener("showThemeTip", handler);
+    return () => {
+      window.removeEventListener("showThemeTip", handler);
+      if ((handler as any)._t) clearTimeout((handler as any)._t);
+    };
+  }, []);
 
 
   const handleClick = () => {
