@@ -1,17 +1,24 @@
 import { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { MessageCircle, X, Send, Bot, User } from "lucide-react";
+import { X, Send, User } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useTheme } from "@/hooks/use-theme";
+import zarneyLightAsset from "@/assets/zarney-light.png.asset.json";
+import zarneyDarkAsset from "@/assets/zarney-dark.png.asset.json";
 
 type Message = { role: "user" | "assistant"; content: string };
 
 const CHAT_URL = `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/chat`;
 
+const ZARNEY_WELCOME = "Hi! I'm Zarney 👋\n\nI'm Rezaan Achmat Fredericks' personal AI Portfolio Assistant.\n\nI'm here to answer questions about my skills, projects, experience, education, services, achievements, and professional journey.\n\nFeel free to ask me anything while exploring my portfolio.";
+
 const ChatBot = () => {
+  const { theme } = useTheme();
+  const zarneyIcon = theme === "dark" ? zarneyDarkAsset.url : zarneyLightAsset.url;
   const [isOpen, setIsOpen] = useState(false);
   const [showBubble, setShowBubble] = useState(false);
   const [messages, setMessages] = useState<Message[]>([
-    { role: "assistant", content: "Hi! 👋 I'm Rezaan's portfolio assistant. Ask me anything about her skills, projects, or experience! Let's go through it together! 🥰" },
+    { role: "assistant", content: ZARNEY_WELCOME },
   ]);
   const [input, setInput] = useState("");
   const [isLoading, setIsLoading] = useState(false);
