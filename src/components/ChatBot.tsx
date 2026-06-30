@@ -230,12 +230,12 @@ const ChatBot = () => {
             >
             {/* Header */}
             <div className="px-4 py-3 border-b border-border bg-primary/5 flex items-center gap-3">
-              <div className="w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center">
-                <Bot className="w-4 h-4 text-primary" />
+              <div className="w-9 h-9 rounded-full overflow-hidden border border-primary/30 flex items-center justify-center bg-background">
+                <img src={zarneyIcon} alt="Zarney" className="w-full h-full object-cover" />
               </div>
               <div>
-                <p className="text-sm font-semibold text-foreground">Portfolio Assistant</p>
-                <p className="text-xs text-muted-foreground">Ask me about Rezaan</p>
+                <p className="text-sm font-semibold text-foreground">Zarney</p>
+                <p className="text-xs text-muted-foreground">Personal AI Portfolio Assistant</p>
               </div>
             </div>
 
