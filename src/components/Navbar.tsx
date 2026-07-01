@@ -62,7 +62,7 @@ const Navbar = () => {
           <img
             src={raLogo.url}
             alt="RA Fredericks"
-            className="h-10 md:h-12 w-auto object-contain select-none"
+            className="h-16 md:h-20 w-auto object-contain select-none"
             draggable={false}
           />
         </Link>

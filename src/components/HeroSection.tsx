@@ -111,51 +111,53 @@ const HeroSection = () => {
             </div>
 
             {/* Social Links */}
-            <div className="flex gap-4 justify-center">
-              <a
-                href="https://github.com/Rezaan91"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Open GitHub profile"
-                title="GitHub"
-                className="glass-button p-3 rounded-full hover:scale-110 transition-transform"
+            <div className="flex flex-col items-center gap-4">
+              <div className="flex gap-4 justify-center">
+                <a
+                  href="https://github.com/Rezaan91"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Open GitHub profile"
+                  title="GitHub"
+                  className="glass-button p-3 rounded-full hover:scale-110 transition-transform"
+                >
+                  <Github size={20} />
+                </a>
+                <a
+                  href="https://www.linkedin.com/in/rezaan-achmat-59050774/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Open LinkedIn profile"
+                  title="LinkedIn"
+                  className="glass-button p-3 rounded-full hover:scale-110 transition-transform"
+                >
+                  <Linkedin size={20} />
+                </a>
+                <a
+                  href="mailto:rezaan91@gmail.com"
+                  aria-label="Send email to rezaan91@gmail.com"
+                  title="Email"
+                  className="glass-button p-3 rounded-full hover:scale-110 transition-transform"
+                >
+                  <Mail size={20} />
+                </a>
+              </div>
+
+              {/* Scroll Indicator (centered beneath social icons) */}
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 1.2 }}
               >
-                <Github size={20} />
-              </a>
-              <a
-                href="https://www.linkedin.com/in/rezaan-achmat-59050774/"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Open LinkedIn profile"
-                title="LinkedIn"
-                className="glass-button p-3 rounded-full hover:scale-110 transition-transform"
-              >
-                <Linkedin size={20} />
-              </a>
-              <a
-                href="mailto:rezaan91@gmail.com"
-                aria-label="Send email to rezaan91@gmail.com"
-                title="Email"
-                className="glass-button p-3 rounded-full hover:scale-110 transition-transform"
-              >
-                <Mail size={20} />
-              </a>
+                <Link to="/about" className="flex flex-col items-center gap-1 text-muted-foreground hover:text-primary transition-colors">
+                  <span className="text-sm">Scroll Down</span>
+                  <ArrowDown size={20} className="animate-bounce" />
+                </Link>
+              </motion.div>
             </div>
           </motion.div>
         </div>
 
-        {/* Scroll Indicator */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1.2 }}
-          className="absolute bottom-8 left-1/2 -translate-x-1/2"
-        >
-          <Link to="/about" className="flex flex-col items-center gap-2 text-muted-foreground hover:text-primary transition-colors">
-            <span className="text-sm">Scroll Down</span>
-            <ArrowDown size={20} className="animate-bounce" />
-          </Link>
-        </motion.div>
       </motion.div>
     </section>
   );
