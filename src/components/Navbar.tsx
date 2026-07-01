@@ -52,17 +52,17 @@ const Navbar = () => {
         scrolled ? "glass-card py-3" : "py-5 bg-transparent"
       }`}
     >
-      <div className="container mx-auto px-4 flex items-center justify-between">
+      <div className="container mx-auto pl-6 md:pl-10 pr-4 flex items-center justify-between">
         <Link
           to="/"
           onClick={(e) => handleClick(e as unknown as React.MouseEvent<HTMLAnchorElement>, "/")}
-          className="flex items-center"
+          className="flex items-center mr-4 md:mr-6"
           aria-label="Home"
         >
           <img
             src={raLogo.url}
             alt="RA Fredericks"
-            className="h-16 md:h-20 w-auto object-contain select-none"
+            className="h-24 md:h-32 w-auto object-contain select-none"
             draggable={false}
           />
         </Link>
