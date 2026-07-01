@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import ThemeToggle from "./ThemeToggle";
+import raLogo from "@/assets/ra-fredericks-logo.png.asset.json";
 
 const navLinks = [
   { name: "Home", to: "/", color: "text-primary" },
@@ -55,9 +56,15 @@ const Navbar = () => {
         <Link
           to="/"
           onClick={(e) => handleClick(e as unknown as React.MouseEvent<HTMLAnchorElement>, "/")}
-          className="text-2xl font-display font-bold gradient-text"
+          className="flex items-center"
+          aria-label="Home"
         >
-          RA
+          <img
+            src={raLogo.url}
+            alt="RA Fredericks"
+            className="h-10 md:h-12 w-auto object-contain select-none"
+            draggable={false}
+          />
         </Link>
 
         {/* Desktop Navigation */}
