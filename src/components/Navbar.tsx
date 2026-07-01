@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import ThemeToggle from "./ThemeToggle";
+import raLogo from "@/assets/ra-fredericks-logo.png.asset.json";
 
 const navLinks = [
   { name: "Home", to: "/", color: "text-primary" },
